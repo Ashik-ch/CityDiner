@@ -1,0 +1,47 @@
+.food-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; //automatical godown when filled
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  padding: 38px 20px;
+
+  .food-items {
+    background-color: white;
+    border-radius: 15px;
+    margin: 10px;
+    padding-bottom: 20px;
+
+    .food-image {
+      width: 15rem;
+      height: 15rem;
+      object-fit: cover;
+      border-radius: 15px 15px 0 15px;
+      margin: 0;
+    }
+    .description {
+      padding: 10px 19px;
+      position: relative;
+      color: black;
+    }
+  }
+
+  .food-items:hover {
+    transform: scale(1.02);
+    transition: 0.4s ease;
+    opacity: 0.7;
+  }
+}
+
+.favourite {
+  font-size: 26px;
+  color: red;
+  position: absolute;
+  right: 10px;
+  top: 4px;
+}
+.favourite.not {
+  color: gray;
+}

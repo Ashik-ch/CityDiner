@@ -1,0 +1,14 @@
+<app-searchbar></app-searchbar>
+
+<div class="food-container">
+    <div *ngFor="let food of food" class="food-items">
+        <img [src]="food.imageUrl" class="img" [alt]="food.id" class="food-image">
+        <div class="description">
+            <h3 class="name ">{{food.name}}</h3>
+            <span class="restaurant ">{{food.restaurant}}</span>
+            <span class="favourite {{food.favourite?'': 'not'}}">♥ </span>
+            <div class="price ">{{food.price | currency}}</div>
+        </div>
+    </div>
+
+</div>
