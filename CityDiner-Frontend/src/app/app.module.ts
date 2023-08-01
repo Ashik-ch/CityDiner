@@ -8,13 +8,16 @@ import { HomeComponent } from './omponents/page/home/home.component';
 import { SearchbarComponent } from './omponents/parts/searchbar/searchbar.component';
 import { FoodComponent } from './omponents/page/food/food.component';
 import { FilterComponent } from './omponents/parts/filter/filter.component';
+// import { CartServComponent } from './service/cart-serv/cart-serv.component';
+import { FoodViewComponent } from './omponents/page/food-view/food-view.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'food', component: FoodComponent },
-  { path: 'food/:searchTerm', component: FoodComponent },
+  { path: 'search/:searchTerm', component: FoodComponent },
   { path: 'category/:cat', component: FoodComponent },
+  { path: 'food/:foodid', component: FoodViewComponent }
 ];
 
 
@@ -30,6 +33,8 @@ const Components = [
     AppComponent,
     Components,
     FilterComponent,
+    // CartServComponent,
+    FoodViewComponent,
 
   ],
   imports: [

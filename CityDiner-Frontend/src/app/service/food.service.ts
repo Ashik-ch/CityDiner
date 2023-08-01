@@ -18,16 +18,19 @@ export class FoodService {
   getfoodbySearch(searchTerm: string) {
     return this.getAllFood().filter(food => food.name.toLowerCase().includes(searchTerm.toLowerCase()))
   }
-
+  /** @description for Filter tags */
   getAllCategory(): Category[] {
     return category
   }
 
-  /** * @description for Filter  Foods by category  @cat categories */
+  /** @description for Filter Foods by category  @param cat categories */
   getAllFoodbyCategory(cat: string) {
     return cat == "All" ?
       this.getAllFood() :
       this.getAllFood().filter(categ => categ.tags?.includes(cat))
   }
-
+  /** @description for params View of Foods by@param foodId ID of Food */
+  getFoodbyId(foodId: string): Food {
+    return this.getAllFood().find(food => food.id == foodId) ?? new Food()
+  }
 }

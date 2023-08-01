@@ -19,8 +19,8 @@ export class SearchbarComponent implements OnInit {
   ngOnInit(): void { }
 
   search(searchs: string): void {
-    if (searchs) this.route.navigateByUrl('/food/' + searchs)
-    else this.route.navigateByUrl('/food')
+    if (searchs) this.route.navigateByUrl('/search/' + searchs)
+    else this.route.navigateByUrl('/search')
   }
 
 }
