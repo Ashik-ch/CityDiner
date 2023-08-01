@@ -1,0 +1,15 @@
+.filter {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  a {
+    color: white;
+    text-decoration: none;
+    border: 1px solid gray;
+    padding: 2px 5px;
+    margin-left: 10px;
+  }
+  a:hover {
+    color: yellow;
+  }
+}

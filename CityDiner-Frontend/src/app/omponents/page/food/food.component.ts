@@ -18,6 +18,9 @@ export class FoodComponent {
       if (params['searchTerm']) {
         this.food = this.foodServ.getfoodbySearch(params['searchTerm'])
       }
+      else if (params['cat']) {
+        this.food = this.foodServ.getAllFoodbyCategory(params['cat'])
+      }
       else {
         this.food = this.foodServ.getAllFood()
       }

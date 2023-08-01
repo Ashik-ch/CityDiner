@@ -10,5 +10,9 @@ export class Food {
     category!: string
     favourite!: boolean
     stars!: number
+}
 
+export class Category {
+    name!: string
+    count!: number
 }
