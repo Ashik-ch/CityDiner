@@ -6,6 +6,7 @@ const app = express()                       //asigning express to app
 app.use(cors({                              //setting connection between fornd-back end
     credentials: true,
     origin: '[http//localhost:4200]'
+    // origin: 'http://localhost:4200',
 }))
 
 /**@description get All foods */
@@ -41,5 +42,5 @@ app.get('/api/foods/:id/', (req, res) => {
 
 const port = 5000;                      //Port Address
 app.listen(port, () => {
-    console.log("Serving at http://localhost:" + port + '/api/foods')
+    console.log("Serving at http://localhost:" + port)
 })

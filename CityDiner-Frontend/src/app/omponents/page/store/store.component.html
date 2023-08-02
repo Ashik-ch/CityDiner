@@ -29,7 +29,7 @@
                         <p class="">{{cartitem.food.category}}</p>
                         <p class="">{{cartitem.food.tags}}</p>
                     </div>
-                    <button class="btn btn-primary mt-5 mr-4" (click)="removeFromCart(cartitem)"> Remove</button>
+                    <button class="btn btn-primary  mr-4" (click)="removeFromCart(cartitem)"> Remove</button>
 
                 </div>
             </div>
@@ -40,6 +40,6 @@
             <p class="total-price">{{cart.totalPrice |currency}}</p>
         </div>
         <button class="btn btn-danger m-2" (click)="clearStore()">Clear </button>
-    
+
     </div>
 </div>

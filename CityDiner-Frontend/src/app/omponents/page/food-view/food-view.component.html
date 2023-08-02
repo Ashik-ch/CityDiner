@@ -1,9 +1,9 @@
 <div class="food-container">
 
-    <app-not-found [visible]=!foods.id LinkText="Back To Previous page" Link="/food" message="No Data Found"
+    <app-not-found [visible]=!foods LinkText="Back To Previous page" Link="/food" message="No Data Found"
         [imageUrl]="imageUrl"></app-not-found>
 
-    <div *ngIf="foods.id">
+    <div *ngIf="foods">
         <div class="card mb-3" style="max-width: 840px;">
             <div class="row g-3">
 

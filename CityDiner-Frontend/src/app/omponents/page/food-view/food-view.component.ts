@@ -12,12 +12,17 @@ import { Food } from 'src/app/shared/models/food';
 export class FoodViewComponent implements OnInit {
   food: Food[] = []
   foods: any
+
   imageUrl = 'https://stormid.com/university-study/static/img/ppc-st-andrews.jpg'
 
   constructor(private foodServ: FoodService, activateRoute: ActivatedRoute,
     private cartService: CartServService, private route: Router) {
     activateRoute.params.subscribe(params => {
-      this.foods = this.foodServ.getFoodbyId(params['foodid'])
+      this.foodServ.getFoodbyId(params['foodid'])
+        .subscribe(res => {
+          this.foods = res
+        })
+
     })
 
 
