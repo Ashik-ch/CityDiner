@@ -1,0 +1,33 @@
+.container {
+  max-width: 560px;
+  margin: auto;
+
+  img {
+    object-fit: cover;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  select {
+    width: 3rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    font-size: 1.1rem;
+    font-weight: 100;
+    background-color: #2e2e2e;
+    color: white;
+  }
+  
+  .total-items::before {
+    content: "Total-items: ";
+    color: lightgray;
+  }
+  .total-price::before {
+    content: "Total-items: ";
+    color: lightgray;
+  }
+}

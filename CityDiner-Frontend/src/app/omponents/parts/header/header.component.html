@@ -6,7 +6,7 @@
             <a routerLink="/">Home</a>
             <a routerLink="/">Restaurant</a>
             <a routerLink="/food">Food</a>
-            <a routerLink="/">Store</a>
+            <a routerLink="/store">Store <span class="quantity" *ngIf="quantity"> {{quantity}} </span> </a>
             <div class="dropdowns">
                 <a class="dropbtn">Profile</a>
                 <div class="dropdown-content">

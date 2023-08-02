@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartServService } from 'src/app/service/cart-serv.service';
 import { FoodService } from 'src/app/service/food.service';
 import { Food } from 'src/app/shared/models/food';
 
@@ -12,7 +13,8 @@ export class FoodViewComponent implements OnInit {
   food: Food[] = []
   foods: any
 
-  constructor(private foodServ: FoodService, activateRoute: ActivatedRoute) {
+  constructor(private foodServ: FoodService, activateRoute: ActivatedRoute,
+    private cartService: CartServService, private route: Router) {
     activateRoute.params.subscribe(params => {
       this.foods = this.foodServ.getFoodbyId(params['foodid'])
     })
@@ -21,6 +23,12 @@ export class FoodViewComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  /**@description Function for add Food  to cart and navigate to Store page */
+  AddToCart() {
+    this.cartService.addToCart(this.foods)
+    this.route.navigateByUrl('/store')
   }
 
 }
