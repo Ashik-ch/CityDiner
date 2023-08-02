@@ -51,13 +51,13 @@
       this.foods = this.foodServ.getFoodbyId(params['foodid'])
     })
 
-<!-- @inpout of title -->
+<!-- @input of title -->
 
-@Input() visible = false
-@Input() message = 'Not Found'
-@Input() LinkText!: string
-@Input() Link = '/'
-@Input() imageUrl = ''
+    @Input() visible = false
+    @Input() message = 'Not Found'
+    @Input() LinkText!: string
+    @Input() Link = '/'
+    @Input() imageUrl = ''
 
     <!-- Parent html -->
        <app-not-found class="food-container" style="padding: 0 20px ;" [visible]=!food.length      LinkText="Go To home Page" Link="/food" message="No Result Found " [imageUrl]="imageUrl">
@@ -66,3 +66,42 @@
 <!-- CSS -->
 
     flex-wrap: wrap; //automatical godown when filled
+
+.
+.
+.
+.
+.
+
+<!-- Connect To Backend -->
+
+    1.  Create backend folder
+    2.  npm init                                    npm init -y
+    3.  npm install typescript express cors         npm  install typescript  express cors
+    4.  Create tsconfig.json in backend folder      copy paste the code
+    5.  Create .gitignore                           and => node_modules
+
+    6.  Copy data.ts to backend/src
+      8.  Create server.ts
+        1. install @types
+
+            import express from 'express'
+            import cors from 'cors'
+
+            const app = express()                       //asigning express to app
+            app.use(cors({                              //setting connection between fornd-back end
+                credentials: true,
+                origin: '[http//localhost:4200]'            }))
+
+            app.get('/', (req, res) => {
+                res.send('hello')            })
+
+            const port = 5000;
+            app.listen(port, () => {
+                console.log("Serving at http://localhost:" + port)            })
+
+        2. Add Apis
+    9. npm install nodemon ts-node --save-dev       (in package.json - "start": "cd src && nodemon server.ts")  => npm start
+    10. Add urs.ts to frontend
+    11. Add HttpClient module
+    12. Update food service
