@@ -6,6 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartServService {
+
   private store: Cart = this.getCartFromLocalStorage();        //initialiing store from local strorage         
   // cart: Cart = new Cart()
 

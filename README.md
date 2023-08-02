@@ -82,26 +82,34 @@
     5.  Create .gitignore                           and => node_modules
 
     6.  Copy data.ts to backend/src
-      8.  Create server.ts
-        1. install @types
+    7.  Create server.ts
+        1. imports          import express from 'express'
+                            import cors from 'cors'
 
-            import express from 'express'
-            import cors from 'cors'
+                            const app = express()                       //asigning express to app
+                            app.use(cors({                              //setting connection between fornd-back end
+                                credentials: true,
+                                origin: '[http//localhost:4200]'            }))
 
-            const app = express()                       //asigning express to app
-            app.use(cors({                              //setting connection between fornd-back end
-                credentials: true,
-                origin: '[http//localhost:4200]'            }))
+        2. Add Apis         app.get('/', (req, res) => {
+                                res.send('hello')            })
 
-            app.get('/', (req, res) => {
-                res.send('hello')            })
+                            const port = 5000;
+                            app.listen(port, () => {
+                                console.log("Serving at http://localhost:" + port)            })
 
-            const port = 5000;
-            app.listen(port, () => {
-                console.log("Serving at http://localhost:" + port)            })
 
-        2. Add Apis
     9. npm install nodemon ts-node --save-dev       (in package.json - "start": "cd src && nodemon server.ts")  => npm start
-    10. Add urs.ts to frontend
-    11. Add HttpClient module
-    12. Update food service
+
+    10. Add urls.ts to frontend src-app -   const BASE_URL = 'http://localhost:5000'
+                                            export const FOOD_URL = BASE_URL + '/api/foods';
+                                            export const FOOD_BY_ID = FOOD_URL + '/';
+
+     11. Add HttpClient module              import { HttpClientModule } from '@angular/common/http'
+
+    12. Update food service                 getAllFood(): Observable<Food[]> {
+                                                return this.http.get<Food[]>(FOOD_URL)                         }
+                                            getfoodbySearch(searchTerm: string) {
+                                                return this.http.get(FOOD_BY_SEARCH + searchTerm)              }
+
+.

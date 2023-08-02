@@ -14,7 +14,9 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.categories = this.foodServ.getAllCategory()
+    this.foodServ.getAllCategory().subscribe(res => {
+      this.categories = res
+    })
   }
 
 

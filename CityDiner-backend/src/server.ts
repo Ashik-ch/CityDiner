@@ -5,8 +5,7 @@ import { category, foodItems } from './data'
 const app = express()                       //asigning express to app
 app.use(cors({                              //setting connection between fornd-back end
     credentials: true,
-    origin: '[http//localhost:4200]'
-    // origin: 'http://localhost:4200',
+    origin: 'http://localhost:4200'
 }))
 
 /**@description get All foods */
