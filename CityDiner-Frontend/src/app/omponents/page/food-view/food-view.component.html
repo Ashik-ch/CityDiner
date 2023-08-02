@@ -1,22 +1,28 @@
 <div class="food-container">
-    <div class="card mb-3" style="max-width: 840px;">
-        <div class="row g-3">
 
-            <div class="col-md-5">
-                <img [src]="foods.imageUrl" [alt]="foods.id" class="img-fluid rounded-start">
-            </div>
+    <app-not-found [visible]=!foods.id LinkText="Back To Previous page" Link="/food" message="No Data Found"
+        [imageUrl]="imageUrl"></app-not-found>
 
-            <div class="col-md-7 mt-4 p-2">
-                <h3 class=" name ">{{foods.name}}</h3>
-                <div class="restaurant">
-                    <span class="  ">{{foods.restaurant}}</span>
-                    <span class=" favourite {{foods.favourite?'': 'not' }}"> ♥ </span>
+    <div *ngIf="foods.id">
+        <div class="card mb-3" style="max-width: 840px;">
+            <div class="row g-3">
+
+                <div class="col-md-5">
+                    <img [src]="foods.imageUrl" [alt]="foods.id" class="img-fluid rounded-start">
                 </div>
-                <div class="price ">{{foods.price | currency}}</div>
-                <div class="price ">{{foods.category }}</div>
-                <div class="price ">{{foods.tags }}</div>
-                <div class="price ">Rating {{foods.stars }}</div>
-                <button class="btn btn-primary mt-5 mr-4" (click)="AddToCart()"> Add to Cart</button>
+
+                <div class="col-md-7 mt-4 p-2">
+                    <h3 class=" name ">{{foods.name}}</h3>
+                    <div class="restaurant">
+                        <span class="  ">{{foods.restaurant}}</span>
+                        <span class=" favourite {{foods.favourite?'': 'not' }}"> ♥ </span>
+                    </div>
+                    <div class="price ">{{foods.price | currency}}</div>
+                    <div class="price ">{{foods.category }}</div>
+                    <div class="price ">{{foods.tags }}</div>
+                    <div class="price ">Rating {{foods.stars }}</div>
+                    <button class="btn btn-primary mt-5 mr-4" (click)="AddToCart()"> Add to Cart</button>
+                </div>
             </div>
         </div>
     </div>

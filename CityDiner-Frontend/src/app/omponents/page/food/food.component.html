@@ -1,17 +1,23 @@
 <app-searchbar></app-searchbar>
-<app-filter></app-filter>
 
-<div class="food-container">
-    <div *ngFor="let food of food" class="food-items">
-        <a routerLink="/food/{{food.id}}">
-            <img [src]="food.imageUrl" class="img" [alt]="food.id" class="food-image">
-            <div class="description">
-                <h3 class="name ">{{food.name}}</h3>
-                <span class="restaurant ">{{food.restaurant}}</span>
-                <span class="favourite {{food.favourite?'': 'not'}}">♥ </span>
-                <div class="price ">{{food.price | currency}}</div>
-            </div>
-        </a>
+<app-not-found class="food-container" style="padding: 0 20px ;" [visible]=!food.length LinkText="Go To home Page" Link="/food" message="No Result Found "
+    [imageUrl]="imageUrl"></app-not-found>
+
+<div *ngIf="food.length>0">
+
+    <app-filter></app-filter>
+    <div class="food-container">
+        <div *ngFor="let food of food" class="food-items">
+            <a routerLink="/food/{{food.id}}">
+                <img [src]="food.imageUrl" class="img" [alt]="food.id" class="food-image">
+                <div class="description">
+                    <h3 class="name ">{{food.name}}</h3>
+                    <span class="restaurant ">{{food.restaurant}}</span>
+                    <span class="favourite {{food.favourite?'': 'not'}}">♥ </span>
+                    <div class="price ">{{food.price | currency}}</div>
+                </div>
+            </a>
+        </div>
+
     </div>
-
 </div>

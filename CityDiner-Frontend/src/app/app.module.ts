@@ -12,6 +12,7 @@ import { FilterComponent } from './omponents/parts/filter/filter.component';
 import { FoodViewComponent } from './omponents/page/food-view/food-view.component';
 import { StoreComponent } from './omponents/page/store/store.component';
 import { TitleComponent } from './omponents/parts/title/title.component';
+import { NotFoundComponent } from './omponents/parts/not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const Components = [
     // CartServComponent,
     FoodViewComponent,
     TitleComponent,
-    StoreComponent
+    StoreComponent,
+    NotFoundComponent
 
   ],
   imports: [

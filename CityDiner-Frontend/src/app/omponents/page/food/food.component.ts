@@ -12,6 +12,7 @@ import { Food } from 'src/app/shared/models/food';
 export class FoodComponent {
 
   food: Food[] = []
+  imageUrl='https://stormid.com/university-study/static/img/ppc-st-andrews.jpg'
 
   constructor(private foodServ: FoodService, activateRoute: ActivatedRoute) {
     activateRoute.params.subscribe(params => {

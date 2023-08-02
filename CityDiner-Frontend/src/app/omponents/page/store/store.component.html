@@ -1,40 +1,45 @@
 <div class="container mt-5">
     <app-title title="Food Cart"></app-title>
-    <div class=" cart border border-1 rounded rounded-lg p-2 m-1">
-        <div class="d-flex" *ngFor="let cartitem of cart.items">
-            <img [src]="cartitem.food.imageUrl" [alt]="cartitem.food.imageUrl" class="col-md-3 rounded">
 
-            <div class="col-md-8 m-4 ">
-                <div class="d-flex justify-content-between">
-                    <a routerLink="/food/{{cartitem.food.id}}">
-                        <p class="">{{cartitem.food.name}}</p>
-                    </a>
-                    <select #quantityselect name="" id="" [value]="cartitem.quantity"
-                        (change)="changeTheQuantity(cartitem,quantityselect.value)">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <p class="">{{cartitem.food.price | currency}}</p>
+    <app-not-found [visible]=!cart.items.length LinkText="Continue Shopping" Link="/food" message="Your Cart is Empty"
+        [imageUrl]="imageUrl"></app-not-found>
+
+    <div *ngIf='cart.items.length>0'>
+        <div class=" cart border border-1 rounded rounded-lg p-2 m-1">
+            <div class="d-flex" *ngFor="let cartitem of cart.items">
+                <img [src]="cartitem.food.imageUrl" [alt]="cartitem.food.imageUrl" class="col-md-3 rounded">
+
+                <div class="col-md-8 m-4 ">
+                    <div class="d-flex justify-content-between">
+                        <a routerLink="/food/{{cartitem.food.id}}">
+                            <p class="">{{cartitem.food.name}}</p>
+                        </a>
+                        <select #quantityselect name="" id="" [value]="cartitem.quantity"
+                            (change)="changeTheQuantity(cartitem,quantityselect.value)">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <p class="">{{cartitem.food.price | currency}}</p>
+                    </div>
+
+                    <div>
+                        <p class="">{{cartitem.food.category}}</p>
+                        <p class="">{{cartitem.food.tags}}</p>
+                    </div>
+                    <button class="btn btn-primary mt-5 mr-4" (click)="removeFromCart(cartitem)"> Remove</button>
+
                 </div>
-
-                <div>
-                    <p class="">{{cartitem.food.category}}</p>
-                    <p class="">{{cartitem.food.tags}}</p>
-                </div>
-
-                <button class="btn btn-primary mt-5 mr-4" (click)="removeFromCart(cartitem)"> Remove</button>
-
             </div>
         </div>
-    </div>
 
-    <div class="border border-1 rounded rounded-lg  p-3  m-1 text-end ">
-        <p class="total-items"> {{cart.totalCount}}</p>
-        <p class="total-price">{{cart.totalPrice |currency}}</p>
+        <div class="border border-1 rounded rounded-lg  p-3  m-1 text-end ">
+            <p class="total-items"> {{cart.totalCount}}</p>
+            <p class="total-price">{{cart.totalPrice |currency}}</p>
+        </div>
+        <button class="btn btn-danger m-2" (click)="clearStore()">Clear </button>
+    
     </div>
-
-    <button class="btn btn-danger m-2" (click)="clearStore()">Clear </button>
 </div>
