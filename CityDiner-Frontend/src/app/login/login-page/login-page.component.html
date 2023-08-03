@@ -1,0 +1,18 @@
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form [formGroup]="loginForm" (ngsubmit)="onSubmit()">
+    <h3>Login Here</h3>
+
+    <label for="username">Email</label>
+    <input type="text" placeholder="Email or Phone" id="username" formControlName="email">
+    <div *ngIf="loginForm.controls['email'].touched && loginForm.controls['email'].invalid">Invalid Email</div>
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" formControlName="password">
+    <div *ngIf="loginForm.controls['password'].touched && loginForm.controls['password'].invalid">Invalid Email</div>
+
+    <button class="btn btn-primary" type="submit" (click)="onSubmit()">Log In</button>
+
+</form>

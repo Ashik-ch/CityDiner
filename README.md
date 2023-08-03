@@ -112,4 +112,16 @@
                                             getfoodbySearch(searchTerm: string) {
                                                 return this.http.get(FOOD_BY_SEARCH + searchTerm)              }
 
-.
+<!-- forms creation -->
+
+    import in module -  FormsModule,
+                        ReactiveFormsModule,
+
+    html    -       <form [formGroup]="loginForm" (ngsubmit)="onSubmit()">   <input formControlName=''>
+
+    ts       -      loginForm!: FormGroup
+                    constructor(private fb: FormBuilder) {  }
+                    ngOnInit(): void {
+                    this.loginForm = this.fb.group({
+                            email: ['', [Validators.email, Validators.required]],
+                            password: ['', [Validators.required]]          })        }

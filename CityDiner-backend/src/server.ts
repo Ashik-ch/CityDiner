@@ -1,8 +1,11 @@
 import express from 'express'
 import cors from 'cors'
-import { category, foodItems } from './data'
+import { Users, category, foodItems } from './data'
+import jwt from 'jsonwebtoken'
 
-const app = express()                       //asigning express to app
+const app = express();                    //asigning express to app
+app.use(express.json());
+
 app.use(cors({                              //setting connection between fornd-back end
     credentials: true,
     origin: 'http://localhost:4200'
@@ -38,6 +41,29 @@ app.get('/api/foods/:id/', (req, res) => {
     const FoodbyId = foodItems.find(food => food.id === foodId)
     res.send(FoodbyId)
 })
+
+app.post('/api/users/login', (req, res) => {
+    // const body = req.body;
+    // const user = Users.filter(user => user.email == body.email && user.password == body.password })
+
+    const { email, password } = req.body;    	        //Destructing method
+    const validUser = Users.find(user => user.email === email && user.password === password);
+    if (validUser) {
+        res.send(jwtokenGenearate(validUser))
+    }
+    else {
+        res.status(400).send({ msg: "Invalid paasword or Email" })
+    }
+})
+
+const jwtokenGenearate = (User: any) => {
+    const token = jwt.sign({
+        email: User.email, isAdmin: User.isAdmin
+    }, "SecretRandomKey", { expiresIn: '30d' })
+
+    User.token = token
+    return User;
+}
 
 const port = 5000;                      //Port Address
 app.listen(port, () => {

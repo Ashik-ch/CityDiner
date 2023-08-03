@@ -13,6 +13,7 @@ import { FoodViewComponent } from './omponents/page/food-view/food-view.componen
 import { StoreComponent } from './omponents/page/store/store.component';
 import { TitleComponent } from './omponents/parts/title/title.component';
 import { NotFoundComponent } from './omponents/parts/not-found/not-found.component';
+import { LoginModule } from './login/login.module';
 
 
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'search/:searchTerm', component: FoodComponent },
   { path: 'category/:cat', component: FoodComponent },
   { path: 'food/:foodid', component: FoodViewComponent },
-  { path: 'store', component: StoreComponent }
+  { path: 'store', component: StoreComponent },
+  { path: 'logout', loadChildren: () => LoginModule },
 ];
 
 
@@ -43,6 +45,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    LoginModule,
     RouterModule.forRoot(routes),
   ],
 

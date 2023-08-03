@@ -75,3 +75,27 @@ export const category: any[] = [
     { name: 'Fry', count: 1 },
     { name: 'Soup', count: 1 },
 ]
+
+export const Users: any[] = [
+    {
+        name: "John Doe",
+        email: "john@gmail.com",
+        password: "12345",
+        address: "Toronto On",
+        isAdmin: true,
+    },
+    {
+        name: "Jane Doe",
+        email: "Jane@gmail.com",
+        password: "12345",
+        address: "Shanghai",
+        isAdmin: false,
+    },
+    {
+        name: "admin",
+        email: "admin@gmail.com",
+        password: "admin",
+        address: "Kannur",
+        isAdmin: false,
+    },
+];

@@ -28,3 +28,17 @@ export class Cart {
     totalPrice: number = 0
     totalCount: number = 0
 }
+
+export class Login {
+    email: string = '';
+    name: string = ''
+    password: string = ''
+    address: string = ''
+    isAdmin: boolean = false
+}
+
+
+export interface ILogin {
+    email: string
+    name: string
+}
