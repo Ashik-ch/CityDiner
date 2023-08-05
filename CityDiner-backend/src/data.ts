@@ -1,5 +1,5 @@
 export const foodItems: any[] = [{
-    id: '1',
+    // id: '1',
     name: 'Pizza Pepperoni',
     price: 10,
     favourite: false,
@@ -10,7 +10,7 @@ export const foodItems: any[] = [{
     category: 'food'
 },
 {
-    id: '2',
+    // id: '2',
     name: 'Meatball',
     price: 20,
     category: 'food',
@@ -21,7 +21,7 @@ export const foodItems: any[] = [{
     tags: ['SlowFood', 'Lunch'],
 },
 {
-    id: '3',
+    // id: '3',
     name: 'Hamburger',
     price: 5,
     category: 'drinks',
@@ -32,7 +32,7 @@ export const foodItems: any[] = [{
     tags: ['FastFood', 'Hamburger'],
 },
 {
-    id: '4',
+    // id: '4',
     name: 'Fried Potatoes',
     price: 2,
     category: '15-20',
@@ -43,7 +43,7 @@ export const foodItems: any[] = [{
     tags: ['FastFood', 'Fry'],
 },
 {
-    id: '5',
+    // id: '5',
     name: 'Chicken Soup',
     price: 11,
     category: 'food',
@@ -54,7 +54,7 @@ export const foodItems: any[] = [{
     tags: ['SlowFood', 'Soup'],
 },
 {
-    id: '6',
+    // id: '6',
     name: 'Vegetables Pizza',
     price: 9,
     category: 'drinks',

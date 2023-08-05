@@ -13,12 +13,12 @@ app.use(express.json());
 
 app.use(cors({                              //setting connection between fornd-back end
     credentials: true,
-    origin: 'http://localhost:4200'
-}))
+    origin: ['http://localhost:4200']
+}));
 
 
-app.use('/api/foods', foodRouter)
-app.use('/api/users', userRouter)
+app.use("/api/foods", foodRouter);
+app.use("/api/users", userRouter);
 
 const port = 5000;                      //Port Address
 app.listen(port, () => {
