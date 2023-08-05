@@ -1,9 +1,10 @@
 <div class="food-container">
+    <app-loading *ngIf="loading == true "></app-loading>
 
-    <app-not-found [visible]=!foods LinkText="Back To Previous page" Link="/food" message="No Data Found"
-        [imageUrl]="imageUrl"></app-not-found>
+    <app-not-found *ngIf="!foods && loading == false" LinkText="Back To Previous page" Link="/food"
+        message="No Data Found" [imageUrl]="imageUrl"></app-not-found>
 
-    <div *ngIf="foods">
+    <div *ngIf="foods && loading == false">
         <div class="card mb-3" style="max-width: 840px;">
             <div class="row g-3">
 

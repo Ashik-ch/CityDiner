@@ -10,22 +10,21 @@ import { Food } from 'src/app/shared/models/food';
   styleUrls: ['./food-view.component.scss']
 })
 export class FoodViewComponent implements OnInit {
-  food: Food[] = []
+
   foods: any
+  loading: boolean = true
 
   imageUrl = 'https://stormid.com/university-study/static/img/ppc-st-andrews.jpg'
 
   constructor(private foodServ: FoodService, activateRoute: ActivatedRoute,
     private cartService: CartServService, private route: Router) {
     activateRoute.params.subscribe(params => {
-      this.foodServ.getFoodbyId(params['foodid'])
-        .subscribe(res => {
-          this.foods = res
-        })
+      this.foodServ.getFoodbyId(params['foodid']).subscribe((res: Food) => {
+        this.foods = res
+        this.loading = false
 
+      })
     })
-
-
   }
 
   ngOnInit() {

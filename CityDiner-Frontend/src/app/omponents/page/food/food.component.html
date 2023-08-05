@@ -1,12 +1,13 @@
 <app-searchbar></app-searchbar>
 
-<app-not-found class="food-container" style="padding: 0 20px ;" [visible]=!food.length LinkText="Go To home Page"
-    Link="/food" message="No Result Found " [imageUrl]="imageUrl"></app-not-found>
+<app-not-found class="food-container" style="padding: 0 20px ;" [visible]="!food.length && loading==false"
+    LinkText="Go To home Page" Link="/food" message="No Result Found " [imageUrl]="imageUrl"></app-not-found>
 
+<app-loading *ngIf="loading == true "></app-loading>
 
 <div *ngIf="food.length>0">
-
     <app-filter></app-filter>
+
     <div class="food-container">
         <div *ngFor="let food of food" class="food-items">
             <a routerLink="/food/{{food.id}}">

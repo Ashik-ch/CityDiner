@@ -1,10 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap");
 
 body {
   font-size: 18px;
   background-color: #2e2e2e;
   list-style-type: none;
   color: white;
+  font-family: "Montserrat", sans-serif;
 }
 
 a {
@@ -18,4 +20,9 @@ li {
 h3 {
   font-weight: 500;
   font-size: 22px;
+}
+
+.loading {
+  display: flex;
+  justify-content: space-around;
 }

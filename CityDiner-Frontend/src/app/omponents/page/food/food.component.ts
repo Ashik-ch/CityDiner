@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AppModule } from 'src/app/app.module';
 import { FoodService } from 'src/app/service/food.service';
 import { Food } from 'src/app/shared/models/food';
 
@@ -14,12 +13,17 @@ export class FoodComponent {
 
   food: Food[] = []
   imageUrl = 'https://stormid.com/university-study/static/img/ppc-st-andrews.jpg'
+  loading: boolean = true
 
-  constructor(private foodServ: FoodService, activateRoute: ActivatedRoute) {
+  constructor(private foodServ: FoodService, private activateRoute: ActivatedRoute) { }
 
+  ngOnInit(): void {
+    this.getFoodData()
+  }
+
+  getFoodData() {
     let foodObservable: Observable<Food[]>;
-    activateRoute.params.subscribe(params => {
-
+    this.activateRoute.params.subscribe(params => {
       if (params['searchTerm']) {
         foodObservable = this.foodServ.getfoodbySearch(params['searchTerm'])
       }
@@ -31,12 +35,9 @@ export class FoodComponent {
       }
       foodObservable.subscribe(res => {
         this.food = res
+        this.loading = false;
       })
     })
   }
-
-  ngOnInit(): void {
-  }
-
 
 }
