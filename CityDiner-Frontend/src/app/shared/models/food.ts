@@ -40,5 +40,13 @@ export class Login {
 
 export interface ILogin {
     email: string
+    password: string
+}
+
+export interface IUserRegister {
     name: string
+    email: string
+    password: string
+    confirmPassword: string
+    address: string
 }

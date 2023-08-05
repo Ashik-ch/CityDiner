@@ -7,4 +7,5 @@ export const FOOD_BY_CATEGORY = FOOD_URL + '/category/'
 export const FOOD_BY_SEARCH = FOOD_URL + '/search/';
 
 export const LOGIN_URL = BASE_URL + '/api/users/login';
+export const USER_REGISTER_URL = BASE_URL + '/api/users/register';
 

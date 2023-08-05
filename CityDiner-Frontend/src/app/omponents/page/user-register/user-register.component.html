@@ -1,0 +1,21 @@
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form [formGroup]="userRegisterForm" (ngsubmit)="onRegister()">
+    <h3></h3>
+
+    <input type="text" placeholder="name" id="name" formControlName="name">
+    <input type="text" placeholder="email" formControlName="email">
+    <div *ngIf="userRegisterForm.controls['email'].touched && userRegisterForm.controls['email'].invalid">Invalid Email
+    </div>
+    <input type="password" placeholder="password" i formControlName="password">
+    <div *ngIf="userRegisterForm.controls['password'].touched && userRegisterForm.controls['password'].invalid">Invalid
+        Email</div>
+    <input type="password" placeholder="cofirm Password" formControlName="confirmPassword">
+    <input type="text" placeholder="address" formControlName="address">
+
+    <button class="btn btn-primary" type="submit" (click)="onRegister()">Rgister</button>
+    <span>Already have an Account? </span> <a routerLink="/login">Login</a>
+
+</form>

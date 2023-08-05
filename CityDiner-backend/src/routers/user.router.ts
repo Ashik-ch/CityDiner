@@ -3,6 +3,7 @@ import { Users } from '../data';
 import jwt from 'jsonwebtoken'
 import asyncHandler from 'express-async-handler';
 import { User, UserModel } from '../models/model';
+import bcrypt from 'bcryptjs';
 
 const router = Router();
 
@@ -30,6 +31,30 @@ router.post("/login", asyncHandler(
         }
         else {
             res.status(400).send("Username or password is invalid!");
+        }
+    }
+))
+
+router.post('/register', asyncHandler(
+    async (req, res) => {
+        const { name, email, password, address } = req.body;
+        const user = await UserModel.findOne({ email });
+        if (user) {
+            res.status(400).send({ msg: 'Already exist' })
+        }
+        else {
+            const encryptedPassword = await bcrypt.hash(password, 10)
+            const newUser: User = {
+                // id: '',
+                name,
+                email: email.toLowerCase(),
+                // password: encryptedPassword,
+                password,
+                address,
+                isAdmin: false,
+            }
+            const dbUser = await UserModel.create(newUser)
+            res.send(generateTokenReponse(newUser))
         }
     }
 ))

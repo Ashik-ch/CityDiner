@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
+import { ILogin } from 'src/app/shared/models/food';
 
 @Component({
   selector: 'app-login-page',
@@ -23,21 +24,25 @@ export class LoginPageComponent implements OnInit {
     })
   }
 
-  email: any;
   onSubmit() {
     this.submitState = true
-    // if (this.loginForm.invalid) console.log(":invalid");
-    // return;
+    if (this.loginForm.invalid) {
+      alert("Invalid Form")
+    }
 
     if (this.loginForm.valid) {
-      this.userServ.login({ email: this.loginForm.value.email, password: this.loginForm.value.password })
-        .subscribe(() => {
+      const user: ILogin = {
+        email: this.loginForm.value.email,
+        password: this.loginForm.value.password,
+      }
+
+      this.userServ.login(user).subscribe(
+        () => {
           this.route.navigateByUrl('/')
-          alert("Login Successfull")
         },
-          (error) => {
-            alert(error.error.msg)
-          })
+        (error) => {
+          alert(error.error.msg)
+        })
     }
   }
 }

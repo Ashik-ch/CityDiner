@@ -29,7 +29,7 @@ export const FoodSchema = new Schema<Food>(    //Schemas
 
 
 export interface User {
-    id: string
+    id?: string
     name: string;
     email: string;
     password: string;

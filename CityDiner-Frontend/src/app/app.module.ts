@@ -14,6 +14,8 @@ import { StoreComponent } from './omponents/page/store/store.component';
 import { TitleComponent } from './omponents/parts/title/title.component';
 import { NotFoundComponent } from './omponents/parts/not-found/not-found.component';
 import { LoginModule } from './login/login.module';
+import { UserRegisterComponent } from './omponents/page/user-register/user-register.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 const routes: Routes = [
@@ -23,7 +25,8 @@ const routes: Routes = [
   { path: 'category/:cat', component: FoodComponent },
   { path: 'food/:foodid', component: FoodViewComponent },
   { path: 'store', component: StoreComponent },
-  { path: 'logout', loadChildren: () => LoginModule },
+  { path: 'register', component: UserRegisterComponent },
+  { path: 'login', loadChildren: () => LoginModule },
 ];
 
 
@@ -40,12 +43,14 @@ const routes: Routes = [
     TitleComponent,
     StoreComponent,
     NotFoundComponent,
+    UserRegisterComponent,
   ],
 
   imports: [
     BrowserModule,
     HttpClientModule,
     LoginModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
   ],
 
