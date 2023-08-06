@@ -37,7 +37,6 @@ export interface User {
     isAdmin: boolean;
 }
 
-
 export const UserSchema = new Schema<User>({            //Schemas
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -51,5 +50,34 @@ export const UserSchema = new Schema<User>({            //Schemas
 });
 
 
+export interface IRestaurant {
+    id?: number
+    name: string
+    favourite?: boolean
+    imageUrl: string
+    cuisine: string[]
+    place: string
+    stars?: number
+    openingtime: number
+}
+
+export const restaurantSchema = new Schema<IRestaurant>(     //Schemas
+    {
+        name: { type: String, required: true },
+        favourite: { type: Boolean, required: false },
+        imageUrl: { type: String, required: true },
+        cuisine: { type: [String], required: true },
+        openingtime: { type: Number, required: true },
+        stars: { type: Number, required: true },
+        place: { type: String, required: true },
+    },
+    {
+        toJSON: { virtuals: true },
+        toObject: { virtuals: true },
+        timestamps: true
+    })
+
+
 export const FoodModel = model<Food>('food', FoodSchema)
 export const UserModel = model<User>('user', UserSchema)
+export const RestaurantModel = model<IRestaurant>('restaurant', restaurantSchema)

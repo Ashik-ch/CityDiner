@@ -5,6 +5,7 @@ import express from 'express'
 import cors from 'cors'
 import foodRouter from './routers/food.router'
 import userRouter from './routers/user.router'
+import restaurantRouter from './routers/restaurant.router';
 import { dbConnect } from './configs/database.config';      //For DB connection
 dbConnect();
 
@@ -19,6 +20,7 @@ app.use(cors({                              //setting connection between fornd-b
 
 app.use("/api/foods", foodRouter);
 app.use("/api/users", userRouter);
+app.use("/api/restaurant", restaurantRouter);
 
 const port = 5000;                      //Port Address
 app.listen(port, () => {

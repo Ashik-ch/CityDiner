@@ -1,4 +1,4 @@
-import { Food, Category } from "./app/shared/models/food"
+import { Food, Category } from "./app/shared/models/Interface"
 
 export const foodItems: Food[] = [{
     id: '1',
