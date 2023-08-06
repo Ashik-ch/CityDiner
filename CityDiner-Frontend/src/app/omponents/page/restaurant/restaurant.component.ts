@@ -31,6 +31,7 @@ export class RestaurantComponent implements OnInit {
     this.restaurantServ.getRestaurant().subscribe((res: any) => {
       this.restaurants = res;
       this.restaurantServ.updateRestaurantCount(res.length); // Update the count using BehaviorSubject
+      this.restaurantServ.updateRestaurant(res);
       console.log(this.restaurants);
     });
   }
@@ -48,7 +49,7 @@ export class RestaurantComponent implements OnInit {
     if (this.RestaurantForm.valid)
       this.restaurantServ.postRestaurant(restaurant).subscribe(
         (res) => {
-          console.log("resres", res);
+          this.getRestaurantAll()
         },
         (error => {
           alert(error.error.msg)

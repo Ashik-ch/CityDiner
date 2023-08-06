@@ -12,6 +12,8 @@ export class RestaurantService {
   private restaurantCountSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   restaurantCount$: Observable<number> = this.restaurantCountSubject.asObservable();
 
+  private restaurantsSubject: BehaviorSubject<IRestaurant[]> = new BehaviorSubject<IRestaurant[]>([]);
+  restaurants$: Observable<IRestaurant[]> = this.restaurantsSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -21,10 +23,14 @@ export class RestaurantService {
   updateRestaurantCount(count: number): void {
     this.restaurantCountSubject.next(count);
   }
-  postRestaurant(restaurants: any) {
-    console.log("restaurants", restaurants);
 
-    return this.http.post(RESTAURANT_URL, restaurants)
+  updateRestaurant(restaurants: IRestaurant[]): void {
+    this.restaurantsSubject.next(restaurants)
+  }
+
+  postRestaurant(restaurants: IRestaurant): Observable<IRestaurant> {
+    console.log("restaurants", restaurants);
+    return this.http.post<IRestaurant>(RESTAURANT_URL, restaurants)
 
   }
 }
