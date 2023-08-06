@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cart, CartItem, Food } from '../shared/models/food';
+import { Cart, CartItem, Food } from '../shared/models/Interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({

@@ -16,10 +16,13 @@ import { NotFoundComponent } from './omponents/parts/not-found/not-found.compone
 import { LoginModule } from './login/login.module';
 import { UserRegisterComponent } from './omponents/page/user-register/user-register.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './omponents/parts/loading/loading.component';
+import { RestaurantComponent } from './omponents/page/restaurant/restaurant.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'restaurant', component: RestaurantComponent },
   { path: 'food', component: FoodComponent },
   { path: 'search/:searchTerm', component: FoodComponent },
   { path: 'category/:cat', component: FoodComponent },
@@ -44,6 +47,8 @@ const routes: Routes = [
     StoreComponent,
     NotFoundComponent,
     UserRegisterComponent,
+    LoadingComponent,
+    RestaurantComponent,
   ],
 
   imports: [

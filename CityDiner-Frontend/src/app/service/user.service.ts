@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LOGIN_URL, USER_REGISTER_URL } from '../constants/urls';
-import { ILogin, IUserRegister } from '../shared/models/food';
+import { ILogin, IUserRegister } from '../shared/models/Interface';
 
 @Injectable({
   providedIn: 'root'

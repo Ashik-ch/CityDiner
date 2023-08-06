@@ -50,3 +50,17 @@ export interface IUserRegister {
     confirmPassword: string
     address: string
 }
+export interface Icuisine {
+    cuisine: string
+}
+
+export interface IRestaurant {
+    id?: number
+    name: string
+    favourite?: boolean
+    cuisine: Icuisine
+    imageUrl: string
+    place: string
+    stars?: number
+    openingtime: number
+}

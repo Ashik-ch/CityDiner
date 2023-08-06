@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartServService } from 'src/app/service/cart-serv.service';
 import { FoodService } from 'src/app/service/food.service';
-import { Food } from 'src/app/shared/models/food';
+import { Food } from 'src/app/shared/models/Interface';
 
 @Component({
   selector: 'app-food-view',

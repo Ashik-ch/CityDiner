@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FoodService } from 'src/app/service/food.service';
-import { Category } from 'src/app/shared/models/food';
+import { Category } from 'src/app/shared/models/Interface';
 
 @Component({
   selector: 'app-filter',

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Category, Food } from '../shared/models/food';
-// import { category, foodItems } from 'src/data';
+import { Category, Food } from '../shared/models/Interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FOOD_BY_CATEGORY, FOOD_BY_ID, FOOD_BY_SEARCH, FOOD_CATEGORY, FOOD_URL } from '../constants/urls';

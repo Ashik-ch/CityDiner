@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/service/user.service';
-import { IUserRegister } from 'src/app/shared/models/food';
+import { IUserRegister } from 'src/app/shared/models/Interface';
 
 @Component({
   selector: 'app-user-register',
@@ -35,8 +35,6 @@ export class UserRegisterComponent implements OnInit {
       password: this.userRegisterForm.value.password,
       address: this.userRegisterForm.value.address
     }
-
-
 
     if (this.userRegisterForm.valid) {
       this.userServ.register(user).subscribe(res => {

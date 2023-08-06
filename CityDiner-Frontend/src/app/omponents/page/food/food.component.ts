@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FoodService } from 'src/app/service/food.service';
-import { Food } from 'src/app/shared/models/food';
+import { Food } from 'src/app/shared/models/Interface';
 
 @Component({
   selector: 'app-food',

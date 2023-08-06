@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CartServService } from 'src/app/service/cart-serv.service';
-import { Cart, CartItem } from 'src/app/shared/models/food';
+import { Cart, CartItem } from 'src/app/shared/models/Interface';
 
 @Component({
   selector: 'app-store',
