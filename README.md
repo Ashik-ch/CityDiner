@@ -125,3 +125,89 @@
                     this.loginForm = this.fb.group({
                             email: ['', [Validators.email, Validators.required]],
                             password: ['', [Validators.required]]          })        }
+
+<!-- Connect Login API To MongoDB Atlas -->
+
+        1. Moving Apis into routers
+        2. Create MongoDB Atlas
+        3. Create .env file
+        4. Install      1. mongoose             mongodb
+                        2. dotenv               path settng
+                        3. bcryptjs             encryption
+                        4. express-async-handler
+        5. Connect to MongoDB Atlas
+        6. Use MongoDB instead of data.ts in apis
+
+
+        Creation of database
+
+        server.ts       ->          import,  app.use("/api/restaurant", restaurantRouter);
+
+        urls.ts         ->          export const RESTAURANT_URL = BASE_URL + '/api/restaurant';
+
+
+        rest.routter.ts  ->
+                import { Router } from "express";
+                import asyncHandler from 'express-async-handler';
+                import { IRestaurant, RestaurantModel } from "../models/model";
+
+                const router = Router();
+
+                router.get('/', asyncHandler(async (req, res) => {                          //Get method
+                    const restaurants = await RestaurantModel.find();
+                    res.send(restaurants);
+                }));
+
+                router.post('/', asyncHandler(                                              // Post method
+                    async (req, res) => {
+                        const { name, place, cuisine, imageUrl, openingtime } = req.body;
+                        const item = await RestaurantModel.findOne({ name })
+                        if (item)   {   res.status(400).send({ msg: 'Already exist' })                }
+                        else        {   const newRestaurant: IRestaurant = { name, place, cuisine, imageUrl, openingtime, stars: 4 }
+                                        const dbRestaurant = await RestaurantModel.create(newRestaurant)
+                                        res.send(newRestaurant)
+                                        }                }
+                    ))
+                export default router;
+
+
+
+         model.ts           ->   Schema and Inerface
+                export interface IRestaurant  {     id?: number                          //inerface
+                                                    name: string
+                                                    favourite?: boolean
+                                                    imageUrl: string
+                                                    cuisine: string[]       }
+
+                export const restaurantSchema = new Schema<IRestaurant>                   //Schemas
+                        ({      name: { type: String, required: true },
+                                favourite: { type: Boolean, required: false },
+                                imageUrl: { type: String, required: true },
+                                cuisine: { type: [String], required: true },            },
+                        {       toJSON: { virtuals: true },
+                                toObject: { virtuals: true },
+                                timestamps: true                                         })
+
+                export const RestaurantModel = model<IRestaurant>('restaurant', restaurantSchema)
+
+
+        <!-- FRONDENT -->
+         rest.serv.ts    ->     getRestaurantAll() {
+                                    this.restaurantServ.getRestaurant().subscribe((res: any) => {
+                                    this.restaurants = res;
+                                });                            }
+
+                                postRestaurant(restaurants: any) {
+                                    return this.http.post(RESTAURANT_URL, restaurants) }
+
+        res.com.ts      ->      OnSubmit() {
+                                    const formvalue = this.RestaurantForm.value
+                                    const restaurant: IRestaurant = {
+                                        name: formvalue.name,
+                                        place: formvalue.place,
+                                        imageUrl: formvalue.imageUrl            }
+
+                                    if (this.RestaurantForm.valid)
+                                        this.restaurantServ.postRestaurant(restaurant).subscribe(
+                                            (res) => {    console.log("resres", res);                     },
+                                            (error => {   alert(error.error.msg)                           })) }

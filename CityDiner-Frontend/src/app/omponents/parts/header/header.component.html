@@ -4,7 +4,7 @@
         <a routerLink="/" class="logo">City Diner</a>
         <li class="navs">
             <a routerLink="/">Home</a>
-            <a routerLink="/">Restaurant</a>
+            <a routerLink="/restaurant">Restaurant {{restaurantCount}}</a>
             <a routerLink="/food">Food</a>
             <a routerLink="/store">Store <span class="quantity" *ngIf="quantity"> {{quantity}} </span> </a>
             <div class="dropdowns">
