@@ -1,0 +1,15 @@
+<div class="btn-div p-2">
+    <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
+</div>
+
+<div class="reg-form">
+    <form [formGroup]="RestaurantForm" (ngSubmit)="OnSubmit()">
+        <input type="text" class="form-control item" id="name" placeholder="Name" formControlName="name">
+        <input type="text" class="form-control item" id="place" placeholder="place" formControlName="place">
+        <input type="text" class="form-control item" id="imageUrl" placeholder="Image" formControlName="imageUrl">
+        <input type="text" class="form-control item" id="cuisine" placeholder="cuisine" formControlName="cuisine">
+        <input type="text" class="form-control item" id="openingtime" placeholder="openingtime"
+            formControlName="openingtime">
+        <button type="submit" class="btn btn-block reg-btn">Register</button>
+    </form>
+</div>

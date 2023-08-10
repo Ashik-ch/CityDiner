@@ -25,6 +25,25 @@ router.get("/", asyncHandler(
     }
 ))
 
+/**@description Adding Foods */
+router.post('/', asyncHandler(
+    async (req, res) => {
+        const { name, imageUrl, restaurant, price, tags, category, stars } = req.body
+        console.log(req.body);
+        const foodname = await FoodModel.findOne({ name })
+        if (foodname) {
+            res.status(400).send("Already exist")
+        }
+        else {
+            const FoodItem: any = {
+                name, imageUrl, restaurant, price, tags, category, stars: 5
+            }
+            const fooditems = await FoodModel.create(FoodItem)
+            res.send(FoodItem)
+        }
+    })
+)
+
 /**@description get foods by search */
 router.get("/search/:searchTerm", asyncHandler(
     async (req, res) => {

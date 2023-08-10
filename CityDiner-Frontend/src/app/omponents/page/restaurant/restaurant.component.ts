@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RestaurantService } from 'src/app/service/restaurant.service';
 import { IRestaurant } from 'src/app/shared/models/Interface';
+import { RestaurantAddDialogComponent } from '../../modal/restaurant-add-dialog/restaurant-add-dialog.component';
+
+import { MatDialog, } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-restaurant',
@@ -11,17 +13,9 @@ import { IRestaurant } from 'src/app/shared/models/Interface';
 export class RestaurantComponent implements OnInit {
 
   restaurants: IRestaurant[] = [];
-  RestaurantForm: FormGroup;
 
-  constructor(private restaurantServ: RestaurantService, private fb: FormBuilder) {
-    this.RestaurantForm = this.fb.group({
-      name: ['', [Validators.required,]],
-      place: ['', [Validators.required]],
-      imageUrl: ['', Validators.required],
-      cuisine: ['', Validators.required],
-      openingtime: ['', [Validators.required, Validators.pattern('^[0-9*]+$')]]
-    })
-  }
+  constructor(private restaurantServ: RestaurantService, public dialog: MatDialog) { }
+
 
   ngOnInit(): void {
     this.getRestaurantAll()
@@ -36,29 +30,25 @@ export class RestaurantComponent implements OnInit {
     });
   }
 
-  OnSubmit() {
-    const formvalue = this.RestaurantForm.value
-    const restaurant: IRestaurant = {
-      name: formvalue.name,
-      place: formvalue.place,
-      imageUrl: formvalue.imageUrl,
-      cuisine: formvalue.cuisine,
-      openingtime: formvalue.openingtime
-    }
 
-    if (this.RestaurantForm.valid)
-      this.restaurantServ.postRestaurant(restaurant).subscribe(
-        (res) => {
-          this.getRestaurantAll()
-        },
-        (error => {
-          alert(error.error.msg)
-        }))
+  openDialog() {
+    const dialogRef = this.dialog.open(RestaurantAddDialogComponent, {
+      height: '600px',
+      width: '750px',
+      disableClose: true, // prevents closing the dialog by clicking outside
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.restaurantServ.postRestaurant(result).subscribe(
+          () => {
+            this.getRestaurantAll()
+          },
+          (error => {
+            alert(error.error.msg)
+          }))
+      }
+    });
   }
-
-
-
-
-
-
 }
+

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cart, CartItem, Food } from '../shared/models/Interface';
+import { Cart, CartItem, IFood } from '../shared/models/Interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -16,7 +16,7 @@ export class CartServService {
   constructor() { }
 
   /**Service Fucntion for adding food to cart */
-  addToCart(food: Food): void {
+  addToCart(food: IFood): void {
     let cartItem = this.store.items.find(item => item.food.id === food.id);
     if (cartItem)
       return;

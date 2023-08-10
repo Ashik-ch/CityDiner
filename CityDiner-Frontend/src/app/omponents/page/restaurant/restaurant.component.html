@@ -1,16 +1,6 @@
 <div class="containers">
 
-    <div class="form-div">
-        <form [formGroup]="RestaurantForm" (ngSubmit)="OnSubmit()" class="form gap-2 d-flex flex-column col-md-6 ">
-            <input type="text" placeholder="name" formControlName="name" class="form-control">
-            <input type="text" placeholder="place" formControlName="place" class="form-control">
-            <input type="text" placeholder="image" formControlName="imageUrl" class="form-control">
-            <input type="text" placeholder="cuisine" formControlName="cuisine" class="form-control">
-            <input type="text" placeholder="openingtime" formControlName="openingtime" class="form-control">
-            <button class="btn btn-primary" type="submit">Add Restaurant</button>
-        </form>
-    </div>
-
+    <button type="button" class="btn btn-primary " (click)="openDialog()">Add Restaurant</button>
 
     <div class="d-flex flex-wrap justify-content-evenly">
         <div class="card" *ngFor="let rest of restaurants">
@@ -22,10 +12,8 @@
                     <h3>{{rest.name}}</h3>
                     <p>{{rest.place}}</p>
                 </div>
-                <div>
-                    <div class="card__info--price">
-                        <li>{{rest.cuisine}}</li>
-                    </div>
+                <div class="card__info--price">
+                    <li>{{rest.cuisine}}</li>
                 </div>
             </div>
             <div class="ms-4">

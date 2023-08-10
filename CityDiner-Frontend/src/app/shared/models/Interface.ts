@@ -1,15 +1,15 @@
 // DataType
 
-export class Food {
+export class IFood {
     id!: string             //importants
     name!: string
     price!: number
     tags?: string[]          //optional
     imageUrl!: string
-    restaurant!: string[]
-    category!: string
-    favourite!: boolean
-    stars!: number
+    restaurant?: string[]
+    category?: string
+    favourite?: boolean
+    stars?: number
 }
 
 export class Category {
@@ -18,7 +18,7 @@ export class Category {
 }
 
 export class CartItem {
-    constructor(public food: Food) { }
+    constructor(public food: IFood) { }
     quantity: number = 1
     price: number = this.food.price
 }

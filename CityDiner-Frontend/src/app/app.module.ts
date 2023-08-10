@@ -18,7 +18,11 @@ import { UserRegisterComponent } from './omponents/page/user-register/user-regis
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './omponents/parts/loading/loading.component';
 import { RestaurantComponent } from './omponents/page/restaurant/restaurant.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RestaurantAddDialogComponent } from './omponents/modal/restaurant-add-dialog/restaurant-add-dialog.component';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { FoodAddDialogComponent } from './omponents/modal/food-add-dialog/food-add-dialog.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,6 +53,8 @@ const routes: Routes = [
     UserRegisterComponent,
     LoadingComponent,
     RestaurantComponent,
+    RestaurantAddDialogComponent,
+    FoodAddDialogComponent,
   ],
 
   imports: [
@@ -56,7 +62,9 @@ const routes: Routes = [
     HttpClientModule,
     LoginModule,
     ReactiveFormsModule,
+    MatDialogModule,
     RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
   ],
 
   exports: [RouterModule],
