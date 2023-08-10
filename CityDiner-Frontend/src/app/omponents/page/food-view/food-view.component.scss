@@ -11,10 +11,69 @@
 .favourite {
   font-size: 26px;
   color: red;
-  position: absolute;
-  top: 9px;
-  right: 25px;
 }
 .favourite.not {
   color: gray;
+}
+
+/////
+/// //''
+.card {
+  max-width: 1000px;
+  width: 100%;
+  padding: 4rem;
+  background-color: rgb(46, 45, 45);
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    padding: 1.5rem;
+  }
+}
+
+img {
+  width: auto;
+  height: 100%;
+  padding: 1rem;
+  object-fit: cover;
+}
+@media (max-width: 768px) {
+  img {
+    padding: 2.5rem 0;
+  }
+}
+
+.btn {
+  background-color: transparent;
+  border-color: rgba(186, 216, 125, 0.863);
+  color: rgba(186, 216, 125, 0.863);
+  padding: 1.8vh 4.5vh;
+  height: fit-content;
+  border-radius: 3px;
+}
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+  box-shadow: none;
+  color: white;
+  -webkit-box-shadow: none;
+  -webkit-user-select: none;
+  transition: none;
+}
+.btn:hover {
+  color: white;
+  border-color: white;
+}
+@media (max-width: 768px) {
+  .btn {
+    background-color: transparent;
+    border-color: rgba(186, 216, 125, 0.863);
+    color: rgba(186, 216, 125, 0.863);
+    padding: 1vh;
+    font-size: 0.9rem;
+    height: fit-content;
+    border-radius: 3px;
+  }
 }

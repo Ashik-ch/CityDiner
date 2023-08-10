@@ -1,28 +1,28 @@
 <div class="food-container">
-    <app-loading *ngIf="loading == true "></app-loading>
+    <app-loading *ngIf="loading == true"></app-loading>
 
     <app-not-found *ngIf="!foods && loading == false" LinkText="Back To Previous page" Link="/food"
         message="No Data Found" [imageUrl]="imageUrl"></app-not-found>
 
     <div *ngIf="foods && loading == false">
-        <div class="card mb-3" style="max-width: 840px;">
+        <div class="card mb-3" style="max-width: 840px">
             <div class="row g-3">
-
                 <div class="col-md-5">
-                    <img [src]="foods.imageUrl" [alt]="foods.id" class="img-fluid rounded-start">
+                    <img [src]="foods.imageUrl" [alt]="foods.id" class="img-fluid rounded-start" />
                 </div>
 
                 <div class="col-md-7 mt-4 p-2">
-                    <h3 class=" name ">{{foods.name}}</h3>
-                    <div class="restaurant">
-                        <span class="  ">{{foods.restaurant}}</span>
-                        <span class=" favourite {{foods.favourite?'': 'not' }}"> ♥ </span>
+                    <div class="restaurant d-flex justify-content-between">
+                        <h3 class="name">{{ foods.name }}</h3>
+                        <span class=" favourite {{ foods.favourite ? '' : 'not' }}"> ♥ </span>
                     </div>
-                    <div class="price ">{{foods.price | currency}}</div>
-                    <div class="price ">{{foods.category }}</div>
-                    <div class="price ">{{foods.tags }}</div>
-                    <div class="price ">Rating {{foods.stars }}</div>
-                    <button class="btn btn-primary mt-5 mr-4" (click)="AddToCart()"> Add to Cart</button>
+                    <span class="  ">{{ foods.restaurant }}</span>
+                    <div class="price">{{ foods.price | currency }}</div>
+                    <div class="price">{{ foods.category }}</div>
+                    <div class="price">{{ foods.tags }}</div>
+                    <div class="price">Rating {{ foods.stars }}</div>
+                    <button class="btn mt-5 me-4" (click)="AddToCart()"> Add to Cart </button>
+                    <button class="btn mt-5" (click)="deleteFood()">Delete</button>
                 </div>
             </div>
         </div>

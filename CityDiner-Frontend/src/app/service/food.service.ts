@@ -41,4 +41,11 @@ export class FoodService {
   getFoodbyId(foodId: string): Observable<IFood> {
     return this.http.get<IFood>(FOOD_BY_ID + foodId)
   }
+
+  /** @description for Delete foodItem  @param foodId Foods */
+  deleteFoodItem(foodId: string) {
+    console.log("foodid", foodId);
+    return this.http.delete(FOOD_BY_ID + foodId)
+
+  }
 }

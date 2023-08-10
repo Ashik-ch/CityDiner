@@ -12,8 +12,9 @@ import { IFood } from 'src/app/shared/models/Interface';
 export class FoodViewComponent implements OnInit {
 
   foods: any
+  foodid: string = ''
   loading: boolean = true
-
+  deletedFood: any
   imageUrl = 'https://stormid.com/university-study/static/img/ppc-st-andrews.jpg'
 
   constructor(private foodServ: FoodService, activateRoute: ActivatedRoute,
@@ -21,14 +22,14 @@ export class FoodViewComponent implements OnInit {
     activateRoute.params.subscribe(params => {
       this.foodServ.getFoodbyId(params['foodid']).subscribe((res: IFood) => {
         this.foods = res
+        this.foodid = this.foods.id
         this.loading = false
 
       })
     })
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   /**@description Function for add Food  to cart and navigate to Store page */
   AddToCart() {
@@ -36,4 +37,13 @@ export class FoodViewComponent implements OnInit {
     this.route.navigateByUrl('/store')
   }
 
+  /**@description Function for delete Food form the list */
+  deleteFood() {
+    this.foodServ.deleteFoodItem(this.foodid)
+      .subscribe((res) => {
+        this.deletedFood = res
+        this.deletedFood = this.deletedFood.msg
+        this.route.navigateByUrl('/food')
+      })
+  }
 }

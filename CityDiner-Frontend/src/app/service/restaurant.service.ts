@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RESTAURANT_URL } from '../constants/urls';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { RESTAURANT_BY_ID_URL, RESTAURANT_URL } from '../constants/urls';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IRestaurant } from '../shared/models/Interface';
 
 @Injectable({
@@ -20,6 +20,11 @@ export class RestaurantService {
   getRestaurant(): Observable<IRestaurant> {
     return this.http.get<IRestaurant>(RESTAURANT_URL)
   }
+
+  getRestaurantByID(restaurantId: string): Observable<IRestaurant> {
+    return this.http.get<IRestaurant>(`${RESTAURANT_BY_ID_URL}/${restaurantId}`, { responseType: 'json' });
+  }
+
   updateRestaurantCount(count: number): void {
     this.restaurantCountSubject.next(count);
   }
@@ -31,6 +36,6 @@ export class RestaurantService {
   postRestaurant(restaurants: IRestaurant): Observable<IRestaurant> {
     console.log("restaurants", restaurants);
     return this.http.post<IRestaurant>(RESTAURANT_URL, restaurants)
-
   }
+
 }

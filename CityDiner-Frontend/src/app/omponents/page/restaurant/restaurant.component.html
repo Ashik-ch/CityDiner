@@ -1,25 +1,27 @@
 <div class="containers">
-
     <button type="button" class="btn btn-primary " (click)="openDialog()">Add Restaurant</button>
-
     <div class="d-flex flex-wrap justify-content-evenly">
-        <div class="card" *ngFor="let rest of restaurants">
-            <div class="card__image">
-                <img [src]="rest.imageUrl" alt="{{rest.imageUrl}}" />
-            </div>
-            <div class="card__info">
-                <div class="car__info--title">
-                    <h3>{{rest.name}}</h3>
-                    <p>{{rest.place}}</p>
+
+        <div class class="card" *ngFor="let rest of restaurants">
+            <a routerLink="/restaurant/{{rest.id}}">
+                <div class="card__image">
+                    <img [src]="rest.imageUrl" alt="{{rest.imageUrl}}" />
                 </div>
-                <div class="card__info--price">
-                    <li>{{rest.cuisine}}</li>
+                <div class="card__info">
+                    <div class="car__info--title">
+                        <h3>{{rest.name}}</h3>
+                        <p>{{rest.place}}</p>
+                    </div>
+                    <div class="card__info--price">
+                        <li>{{rest.cuisine}}</li>
+                    </div>
                 </div>
-            </div>
-            <div class="ms-4">
-                <label>{{rest.openingtime}}:hours</label>
-                <p>Star:{{rest.stars}} </p>
-            </div>
+                <div class="ms-4">
+                    <label>{{rest.openingtime}}:hours</label>
+                    <p>Star:{{rest.stars}} </p>
+                </div>
+            </a>
         </div>
+
     </div>
 </div>

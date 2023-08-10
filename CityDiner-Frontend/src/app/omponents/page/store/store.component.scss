@@ -21,7 +21,7 @@
     background-color: #2e2e2e;
     color: white;
   }
-  
+
   .total-items::before {
     content: "Total-items: ";
     color: lightgray;
@@ -30,4 +30,21 @@
     content: "Total-items: ";
     color: lightgray;
   }
+}
+
+.product-details {
+  padding: 10px;
+}
+
+.cart {
+  background: #2a2626;
+}
+
+.items {
+  -webkit-box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.25);
+  box-shadow: 5px 5px 4px -1px rgba(0, 0, 0, 0.08);
+}
+
+.spec {
+  font-size: 11px;
 }

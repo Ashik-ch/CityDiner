@@ -26,4 +26,13 @@ router.post('/', asyncHandler(
     }
 ))
 
+router.get('/:restaurantid', asyncHandler(
+    async (req, res) => {
+        const restaurant = await RestaurantModel.findById(req.params.restaurantid)
+        console.log("ress", restaurant);
+        res.send(restaurant)
+
+    }
+))
+
 export default router;

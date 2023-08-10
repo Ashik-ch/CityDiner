@@ -1,45 +1,62 @@
-<div class="container mt-5">
-    <app-title title="Food Cart"></app-title>
+<app-title title="Food Cart"></app-title>
+<div class="container mt-5 p-3 rounded cart">
+  <app-not-found [visible]="!cart.items.length" LinkText="Continue Shopping" Link="/food" message="Your Cart is Empty"
+    [imageUrl]="imageUrl"></app-not-found>
 
-    <app-not-found [visible]=!cart.items.length LinkText="Continue Shopping" Link="/food" message="Your Cart is Empty"
-        [imageUrl]="imageUrl"></app-not-found>
+  <div *ngIf="cart.items.length > 0">
+    <div class="row no-gutters">
+      <div class="col-md-">
+        <div class="product-details me-2">
+          <div class="d-flex flex-row align-items-center">
+            <i class="fa fa-long-arrow-left"></i><span class="ms-2">Continue Shopping</span>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-between">
+            <span>You have
+              <span class="text-warning">{{ cart.totalCount }} </span>items in
+              your cart</span>
 
-    <div *ngIf='cart.items.length>0'>
-        <div class=" cart border border-1 rounded rounded-lg p-2 m-1">
-            <div class="d-flex" *ngFor="let cartitem of cart.items">
-                <img [src]="cartitem.food.imageUrl" [alt]="cartitem.food.imageUrl" class="col-md-3 rounded">
-
-                <div class="col-md-8 m-4 ">
-                    <div class="d-flex justify-content-between">
-                        <a routerLink="/food/{{cartitem.food.id}}">
-                            <p class="">{{cartitem.food.name}}</p>
-                        </a>
-                        <select #quantityselect name="" id="" [value]="cartitem.quantity"
-                            (change)="changeTheQuantity(cartitem,quantityselect.value)">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <p class="">{{cartitem.food.price | currency}}</p>
-                    </div>
-
-                    <div>
-                        <p class="">{{cartitem.food.category}}</p>
-                        <p class="">{{cartitem.food.tags}}</p>
-                    </div>
-                    <button class="btn btn-primary  mr-4" (click)="removeFromCart(cartitem)"> Remove</button>
-
-                </div>
+            <div class="d-flex flex-row align-items-center">
+              <span class="text-black-50">Sort by:</span>
+              <div class="price ms-2">
+                <span class="me-1">price</span><i class="fa fa-angle-down"></i>
+              </div>
             </div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded"
+            *ngFor="let cartitem of cart.items">
+            <a routerLink="/food/{{ cartitem.food.id }}" class="d-flex flex-row">
+              <img class="rounded me-2" [src]="cartitem.food.imageUrl" [alt]="cartitem.food.imageUrl" width="40" />
+              <div class="ms-2">
+                <span class="font-weight-bold d-block">{{
+                  cartitem.food.name
+                  }}</span><span class="spec">{{ cartitem.food.category }}</span>
+              </div>
+            </a>
+            <select #quantityselect name="" id="" [value]="cartitem.quantity"
+              (change)="changeTheQuantity(cartitem, quantityselect.value)">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <div class="d-flex flex-row align-items-center">
+              <span class="d-block ms-5 font-weight-bold">{{
+                cartitem.food.price | currency
+                }}</span>
+              <i class="fa-solid fa-trash ms-2" (click)="removeFromCart(cartitem)"></i>
+            </div>
+          </div>
+          <div class="items rounded rounded-lg pt-3 pe-3 m-1 text-end">
+            <p class="total-items">{{ cart.totalCount }}</p>
+            <p class="total-price">{{ cart.totalPrice | currency }}</p>
+          </div>
+          <button class="btn btn-danger m-2" (click)="clearStore()">
+            Clear
+          </button>
         </div>
-
-        <div class="border border-1 rounded rounded-lg  p-3  m-1 text-end ">
-            <p class="total-items"> {{cart.totalCount}}</p>
-            <p class="total-price">{{cart.totalPrice |currency}}</p>
-        </div>
-        <button class="btn btn-danger m-2" (click)="clearStore()">Clear </button>
-
+      </div>
     </div>
+  </div>
 </div>

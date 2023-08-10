@@ -16,7 +16,6 @@ export class RestaurantComponent implements OnInit {
 
   constructor(private restaurantServ: RestaurantService, public dialog: MatDialog) { }
 
-
   ngOnInit(): void {
     this.getRestaurantAll()
   }
@@ -26,7 +25,6 @@ export class RestaurantComponent implements OnInit {
       this.restaurants = res;
       this.restaurantServ.updateRestaurantCount(res.length); // Update the count using BehaviorSubject
       this.restaurantServ.updateRestaurant(res);
-      console.log(this.restaurants);
     });
   }
 
