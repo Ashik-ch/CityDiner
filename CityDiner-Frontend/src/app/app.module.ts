@@ -25,16 +25,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FoodAddDialogComponent } from './omponents/modal/food-add-dialog/food-add-dialog.component';
 import { RestaurantViewComponent } from './omponents/page/restaurant-view/restaurant-view.component';
 import { MapComponent } from './omponents/page/map/map.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'restaurant', component: RestaurantComponent },
-  { path: 'restaurant/:restaurantid', component: RestaurantViewComponent },
+  { path: 'restaurant/:restaurantid', component: RestaurantViewComponent, canActivate: [AuthGuard] },
   { path: 'food', component: FoodComponent },
   { path: 'search/:searchTerm', component: FoodComponent },
   { path: 'category/:cat', component: FoodComponent },
-  { path: 'food/:foodid', component: FoodViewComponent },
-  { path: 'store', component: StoreComponent },
+  { path: 'food/:foodid', component: FoodViewComponent, canActivate: [AuthGuard] },
+  { path: 'store', component: StoreComponent, canActivate: [AuthGuard] },
   { path: 'register', component: UserRegisterComponent },
   { path: 'login', loadChildren: () => LoginModule },
 ];

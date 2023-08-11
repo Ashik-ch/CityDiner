@@ -36,7 +36,8 @@ export class LoginPageComponent implements OnInit {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
       }
-      this.userServ.login(user).subscribe(() => {
+      this.userServ.login(user).subscribe((res: any) => {
+        localStorage.setItem("token", res.token)
         this.route.navigateByUrl('/')
       },
         (error) => { alert(error.error.msg) })

@@ -211,3 +211,10 @@
                                         this.restaurantServ.postRestaurant(restaurant).subscribe(
                                             (res) => {    console.log("resres", res);                     },
                                             (error => {   alert(error.error.msg)                           })) }
+
+        <!-- for Google map -->
+            npm install leaflet
+            npm install --save-dev @types/leaflet
+
+        <!-- For guard  - Redirect login page for accesing more things-->
+            ng g g guard

@@ -38,11 +38,9 @@ export class UserRegisterComponent implements OnInit {
 
     if (this.userRegisterForm.valid) {
       this.userServ.register(user).subscribe(res => {
-        console.log("res", res);
-        alert("Regeterd")
       },
         (error) => {
-          alert(error.error)
+          alert('invalid')
         })
     }
   }
