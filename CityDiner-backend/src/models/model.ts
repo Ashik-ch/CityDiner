@@ -59,6 +59,8 @@ export interface IRestaurant {
     place: string
     stars?: number
     openingtime: number
+    AddressLat: number
+    AdressLong: number
 }
 
 export const restaurantSchema = new Schema<IRestaurant>(     //Schemas
@@ -70,6 +72,8 @@ export const restaurantSchema = new Schema<IRestaurant>(     //Schemas
         openingtime: { type: Number, required: true },
         stars: { type: Number, required: true },
         place: { type: String, required: true },
+        AddressLat: { type: Number, required: true },
+        AdressLong: { type: Number, required: true },
     },
     {
         toJSON: { virtuals: true },

@@ -20,7 +20,9 @@ export class RestaurantAddDialogComponent {
       place: ['', [Validators.required]],
       imageUrl: ['', Validators.required],
       cuisine: ['', Validators.required],
-      openingtime: ['', [Validators.required, Validators.pattern('^[0-9*]+$')]]
+      openingtime: ['', [Validators.required, Validators.pattern('^[0-9*]+$')]],
+      AdressLong: ['', Validators.required],
+      AddressLat: ['', Validators.required],
     })
   }
 

@@ -1,20 +1,29 @@
-<div class="main">
-    <ul class="cards">
-        <li class="cards_item" id="item_salad">
-            <div class="card">
-                <div class="card_price">{{selectedRestaurant.stars}} ⭐</div>
-                <div class="card_image"><img src="{{selectedRestaurant.imageUrl}}"
-                        alt="mixed vegetable salad in a mason jar. "></div>
-                <div class="card_content">
-                    <h2 class="card_title">{{selectedRestaurant.name}}</h2>
-                    <div class="card_text">
-                        <p>{{selectedRestaurant.place}} </p>
-                        <p>{{selectedRestaurant.cuisine}}</p>
-                        <p>{{selectedRestaurant.openingtime}}</p>
-                        <p></p>
-                    </div>
-                </div>
-            </div>
-        </li>
-    </ul>
+<div class="card d-flex flex-row" style="width: 100%;">
+    <div class="view overlay">
+        <img class="card-img-top" src="{{selectedRestaurant.imageUrl}}" alt="Card image cap">
+        <a href="#!">
+            <div class="mask rgba-white-slight"></div>
+        </a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">{{selectedRestaurant.name}}</h4>
+        <p class="card-text">{{selectedRestaurant.place}}</p>
+        <div class="card_price">{{selectedRestaurant.stars}} ⭐</div>
+        <p>{{selectedRestaurant.cuisine}}</p>
+        <p>{{selectedRestaurant.openingtime}}</p>
+    </div>
+
 </div>
+<div *ngIf="!selectedRestaurant.AdressLong">
+    <div class="adress border p-3"> Address Not found!</div>
+</div>
+<app-map [lat]="latitude" [long]="longitude"></app-map>
+
+<style>
+    .adress {
+        position: absolute;
+        margin: 16% 42%;
+        z-index: 500;
+        background: black;
+    }
+</style>

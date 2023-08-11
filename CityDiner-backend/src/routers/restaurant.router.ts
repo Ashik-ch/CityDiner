@@ -11,14 +11,14 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post('/', asyncHandler(
     async (req, res) => {
-        const { name, place, cuisine, imageUrl, openingtime } = req.body;
+        const { name, place, cuisine, imageUrl, openingtime, AddressLat, AdressLong } = req.body;
         const item = await RestaurantModel.findOne({ name })
         if (item) {
             res.status(400).send({ msg: 'Already exist' })
         }
         else {
             const newRestaurant: IRestaurant = {
-                name, place, cuisine, imageUrl, openingtime, stars: 4,
+                name, place, cuisine, imageUrl, openingtime, stars: 4, AddressLat, AdressLong
             }
             const dbRestaurant = await RestaurantModel.create(newRestaurant)
             res.send(newRestaurant)

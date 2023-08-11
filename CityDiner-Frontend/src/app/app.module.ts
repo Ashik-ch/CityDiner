@@ -24,6 +24,7 @@ import { RestaurantAddDialogComponent } from './omponents/modal/restaurant-add-d
 import { MatDialogModule } from '@angular/material/dialog';
 import { FoodAddDialogComponent } from './omponents/modal/food-add-dialog/food-add-dialog.component';
 import { RestaurantViewComponent } from './omponents/page/restaurant-view/restaurant-view.component';
+import { MapComponent } from './omponents/page/map/map.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -58,6 +59,7 @@ const routes: Routes = [
     RestaurantAddDialogComponent,
     FoodAddDialogComponent,
     RestaurantViewComponent,
+    MapComponent,
   ],
 
   imports: [
