@@ -1,5 +1,7 @@
 <div class="containers">
-    <button type="button" class="btn btn-primary " (click)="openDialog()">Add Restaurant</button>
+    <app-searchbar></app-searchbar>
+
+    <button class="add-button" type="button" (click)="openDialog()">Add Restaurant</button>
     <div class="d-flex flex-wrap justify-content-evenly">
 
         <div class class="card" *ngFor="let rest of restaurants">

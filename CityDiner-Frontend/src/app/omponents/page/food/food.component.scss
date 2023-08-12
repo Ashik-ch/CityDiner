@@ -1,3 +1,6 @@
+.container-fluid {
+  position: relative;
+}
 .food-container {
   display: flex;
   gap: 10px;
@@ -43,4 +46,10 @@
 }
 .favourite.not {
   color: gray;
+}
+.add-button {
+  position: absolute;
+  top: 0;
+  right: 9%;
+  margin: 10px;
 }

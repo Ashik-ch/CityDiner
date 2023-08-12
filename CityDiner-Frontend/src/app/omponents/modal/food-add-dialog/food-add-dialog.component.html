@@ -1,9 +1,7 @@
-<div class="col-md-10 reg-form">
-    <div class="close div d-flex justify-content-end">
-        <i class="fa-regular fa-circle-xmark fa-xl" (click)="onCancel()" style="color:black ;"></i>
-    </div>
+<div class="reg-form">
     <form [formGroup]="FoodForm" (ngSubmit)="onSubmit()">
-        <input type="text" placeholder="name" formControlName='name' id='name' class="form-control item item">
+        <h3 class="text-dark"> {{Buttonlabel}}</h3>
+        <input type="text" placeholder="name" formControlName="name" id='name' class="form-control item item">
         <input type="text" placeholder="imageUrl" formControlName="imageUrl" id="imageUrl" class="form-control item">
         <input type="text" placeholder="restaurant" formControlName="restaurant" id="restaurant"
             class="form-control item">
@@ -21,7 +19,9 @@
             <option value="Bevarage">Bevarage</option>
             <option value="HotDrink">Hot Drink</option>
         </select>
-
-        <button type="submit" class="btn reg-btn" (click)="onSubmit()">Add Food</button>
+        <div class="d-flex gap-2">
+            <button type="submit" (click)="onSubmit()">{{Buttonlabel}}</button>
+            <button type="button" (click)="onCancel()">Cancel</button>
+        </div>
     </form>
 </div>

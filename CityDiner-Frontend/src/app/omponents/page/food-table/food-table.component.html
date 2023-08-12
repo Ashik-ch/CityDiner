@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="addfoodbtn">
+        <button class="px-3" type="button" (click)="openFoodDialog()">Add Food</button>
+    </div>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">price</th>
+                <th scope="col">tags</th>
+                <th scope="col">category</th>
+                <th scope="col">restaurant</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let food of foods, let i = index">
+                <th scope="row">{{i +1}}</th>
+                <td><img src="{{food.imageUrl}}" alt=""> </td>
+                <td>{{food.name}}</td>
+                <td>{{food.price | currency}}</td>
+                <td>{{food.tags}}</td>
+                <td>{{food.category|json}}</td>
+                <td>{{food.restaurant}}</td>
+                <td>{{food.stars}}</td>
+                <td class=""><i class="fa-solid fa-trash me-2" (click)="onDelete(food)"></i> <i
+                        class="fa-regular fa-pen-to-square ms-2" (click)="openFoodDialog(food)"></i>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>

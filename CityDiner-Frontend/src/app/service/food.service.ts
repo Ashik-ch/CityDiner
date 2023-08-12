@@ -46,6 +46,11 @@ export class FoodService {
   deleteFoodItem(foodId: string) {
     console.log("foodid", foodId);
     return this.http.delete(FOOD_BY_ID + foodId)
+  }
+
+  editFood(food: IFood) {
+    console.log("servicFood", food);
+    return this.http.put(FOOD_BY_ID, food)
 
   }
 }

@@ -116,5 +116,24 @@ router.delete("/:foodId", asyncHandler(
     }
 ))
 
+router.put('/', asyncHandler(
+    async (req, res) => {
+        const { id, name, price, tags, imageUrl, restaurant, category, } = req.body
+        try {
+            const updateFood = await FoodModel.findByIdAndUpdate(id, {
+                name, price, tags, imageUrl, restaurant, category
+            }, { new: true });
+            if (updateFood) {
+                res.json(updateFood);
+            } else {
+                res.status(404).json({ message: 'Food item not found' });
+            }
+        }
+        catch (error) {
+            res.status(500).json({ message: 'Error updating food item' });
+        }
+    }
+))
+
 
 export default router;

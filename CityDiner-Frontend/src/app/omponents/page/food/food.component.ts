@@ -49,21 +49,5 @@ export class FoodComponent {
     })
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(FoodAddDialogComponent, {
-      height: '600px',
-      width: '750px',
-      disableClose: true, // prevents closing the dialog by clicking outside
-    });
 
-    dialogRef.afterClosed().subscribe((result: IFood) => {
-      if (result) {
-        const newfood = result;
-        this.foodServ.postFood(newfood).subscribe((res) => {
-          console.log(res);
-          this.getFoodData()
-        });
-      }
-    })
-  }
 }

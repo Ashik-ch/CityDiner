@@ -1,6 +1,7 @@
+<app-food-table></app-food-table>
+
 <div class="container-fluid">
     <app-searchbar></app-searchbar>
-    <button type="button" class="btn btn-primary" (click)="openDialog()">Add Food </button>
 
     <app-not-found class="food-container" style="padding: 0 20px ;" [visible]="!food.length && loading==false"
         LinkText="Go To home Page" Link="/food" message="No Result Found " [imageUrl]="imageUrl"></app-not-found>

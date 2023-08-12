@@ -6,6 +6,7 @@ import { IRestaurant } from 'src/app/shared/models/Interface';
 @Component({
   selector: 'app-restaurant-view',
   templateUrl: './restaurant-view.component.html',
+  styleUrls: ['./restaurant-view.component.scss']
 })
 export class RestaurantViewComponent implements OnInit {
 

@@ -1,6 +1,7 @@
-import { Component, } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { IFood } from 'src/app/shared/models/Interface';
 
 @Component({
   selector: 'app-food-add-dialog',
@@ -10,34 +11,44 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class FoodAddDialogComponent {
 
   FoodForm: FormGroup;
+  Buttonlabel: string = 'Add Food'
 
   constructor(public dialogRef: MatDialogRef<FoodAddDialogComponent>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: IFood,
   ) {
     this.FoodForm = this.fb.group({
-      id: ['', Validators.required],
+      id: [''],
       name: ['', Validators.required],
       price: ['', Validators.required],
       tags: ['', Validators.required],
       imageUrl: ['', Validators.required],
       restaurant: ['', Validators.required],
       category: ['', Validators.required],
-      favourite: ['', Validators.required],
     })
+    if (data) {
+      this.Buttonlabel = "Update Food"
+      this.FoodForm.setValue({
+        id: data.id,
+        name: data.name,
+        price: data.price,
+        tags: data.tags,
+        imageUrl: data.imageUrl,
+        restaurant: data.restaurant,
+        category: data.category ?? 'defaultCategory'
+      });
+    }
   }
 
   onSubmit() {
-    const fv = this.FoodForm.value
-    const newfood = {
-      id: '1',
-      name: fv.name,
-      price: fv.price,
-      imageUrl: fv.imageUrl,
-      tags: fv.tags,
-      restaurant: fv.restaurant,
-      favourite: true,
+    const formData = this.FoodForm.value
+
+    if (this.data) {
+      this.dialogRef.close(formData);
+    } else {
+      const newFood = { ...formData, id: 'new-id', favourite: true };
+      this.dialogRef.close(newFood)
     }
-    this.dialogRef.close(newfood)
   }
 
   onCancel() {

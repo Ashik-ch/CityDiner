@@ -26,6 +26,7 @@ import { FoodAddDialogComponent } from './omponents/modal/food-add-dialog/food-a
 import { RestaurantViewComponent } from './omponents/page/restaurant-view/restaurant-view.component';
 import { MapComponent } from './omponents/page/map/map.component';
 import { AuthGuard } from './auth/auth.guard';
+import { FoodTableComponent } from './omponents/page/food-table/food-table.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -61,6 +62,7 @@ const routes: Routes = [
     FoodAddDialogComponent,
     RestaurantViewComponent,
     MapComponent,
+    FoodTableComponent,
   ],
 
   imports: [

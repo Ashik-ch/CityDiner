@@ -20,6 +20,7 @@ export const FoodSchema = new Schema<Food>(    //Schemas
         imageUrl: { type: String, required: true },
         restaurant: { type: [String], required: true },
         favourite: { type: Boolean, required: false },
+        category: { type: String, required: true },
         stars: { type: Number, required: true },
     }, {
     toJSON: { virtuals: true },
