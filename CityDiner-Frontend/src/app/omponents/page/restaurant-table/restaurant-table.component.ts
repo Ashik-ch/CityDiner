@@ -24,10 +24,11 @@ export class RestaurantTableComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  openRestaurantDialog() {
+  openRestaurantDialog(restaurant?: IRestaurant) {
     const dialogRef = this.dialog.open(RestaurantAddDialogComponent, {
       width: '750px',
       disableClose: true, // prevents closing the dialog by clicking outside
+      data: { restaurant }
     })
 
     dialogRef.afterClosed().subscribe(result => {

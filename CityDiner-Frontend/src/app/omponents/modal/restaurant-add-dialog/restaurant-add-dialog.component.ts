@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -11,9 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RestaurantAddDialogComponent {
 
   RestaurantForm: FormGroup;
+  buttonLabel: string = 'Add Restaurant'
 
   constructor(
     public dialogRef: MatDialogRef<RestaurantAddDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder) {
     this.RestaurantForm = this.fb.group({
       name: ['', [Validators.required,]],
@@ -24,20 +26,38 @@ export class RestaurantAddDialogComponent {
       AdressLong: ['', Validators.required],
       AddressLat: ['', Validators.required],
     })
-  }
 
-  onCancel() {
-    this.dialogRef.close();
+    if (data.restaurant) {
+      data = data.restaurant;
+      this.buttonLabel = 'Update Restaurant';
+      this.RestaurantForm.setValue({
+        name: data.name,
+        place: data.place,
+        imageUrl: data.imageUrl,
+        cuisine: data.cuisine,
+        openingtime: data.openingtime,
+        AdressLong: data.AdressLong ?? "custom",
+        AddressLat: data.AddressLat ?? "custom",
+      })
+    }
   }
 
   OnSubmit() {
-    console.log(this.RestaurantForm.value);
+    const formvalue = this.RestaurantForm.value
+    console.log("formvalue", formvalue);
+    if (this.data) {
+      this.dialogRef.close(formvalue);
+    }
     if (this.RestaurantForm.valid) {
-      const formvalue = this.RestaurantForm.value
       this.dialogRef.close(formvalue);
     }
     else {
       alert("invalid Form")
     }
   }
+
+  onCancel() {
+    this.dialogRef.close();
+  }
+
 }

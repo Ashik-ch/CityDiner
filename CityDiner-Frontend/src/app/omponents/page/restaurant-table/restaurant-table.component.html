@@ -27,6 +27,7 @@
                 <td>{{item.openingtime}}</td>
                 <td>{{item.stars}}</td>
                 <td class=""><i class="fa-solid fa-trash me-2" (click)="onDelete(item)"></i>
+                    <i class="fa-regular fa-pen-to-square ms-2" (click)="openRestaurantDialog(item)"></i>
                 </td>
             </tr>
         </tbody>
