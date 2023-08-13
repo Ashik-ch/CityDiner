@@ -1,0 +1,12 @@
+{
+    "name": "citydiner",
+    "version": "1.0.0",
+    "engines": {
+        "node": ">=18 <19"
+    },
+    "scripts": {
+        "start": "cd CityDiner-backend/built && node server.js",
+        "prebuild": "cd CityDiner-backend && npm run build",
+        "build": "cd CityDiner-Frontend && npm run build"
+    }
+}
