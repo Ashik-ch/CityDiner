@@ -59,4 +59,13 @@ export class RestaurantTableComponent implements OnInit {
     })
   }
 
+  onSearch(searchterm: any) {
+    this.restaurantServ.getRestaurant().subscribe((res: any) => {
+      const Searchresult = res.filter((element: IRestaurant) => {
+        return element.name.toLowerCase().includes(searchterm.toLowerCase())
+      });
+      this.restaurants = Searchresult
+    })
+  }
+
 }
