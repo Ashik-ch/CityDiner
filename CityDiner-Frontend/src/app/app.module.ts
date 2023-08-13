@@ -27,6 +27,7 @@ import { RestaurantViewComponent } from './omponents/page/restaurant-view/restau
 import { MapComponent } from './omponents/page/map/map.component';
 import { AuthGuard } from './auth/auth.guard';
 import { FoodTableComponent } from './omponents/page/food-table/food-table.component';
+import { RestaurantTableComponent } from './omponents/page/restaurant-table/restaurant-table.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -63,6 +64,7 @@ const routes: Routes = [
     RestaurantViewComponent,
     MapComponent,
     FoodTableComponent,
+    RestaurantTableComponent,
   ],
 
   imports: [

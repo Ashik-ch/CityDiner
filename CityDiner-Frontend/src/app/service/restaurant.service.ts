@@ -38,4 +38,7 @@ export class RestaurantService {
     return this.http.post<IRestaurant>(RESTAURANT_URL, restaurants)
   }
 
+  DeleteRestaurant(rest: any) {
+    return this.http.delete(`${RESTAURANT_URL}/${rest.id}`)
+  }
 }

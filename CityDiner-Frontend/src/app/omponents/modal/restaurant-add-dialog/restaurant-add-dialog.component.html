@@ -1,19 +1,24 @@
-<div class="btn-div p-2">
-    <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
-</div>
-
 <div class="reg-form">
+    <div class="close-div p-2">
+        <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
+    </div>
     <form [formGroup]="RestaurantForm" (ngSubmit)="OnSubmit()">
-        <input type="text" class="form-control item" id="name" placeholder="Name" formControlName="name">
-        <input type="text" class="form-control item" id="place" placeholder="place" formControlName="place">
-        <input type="text" class="form-control item" id="imageUrl" placeholder="Image" formControlName="imageUrl">
-        <input type="text" class="form-control item" id="cuisine" placeholder="cuisine" formControlName="cuisine">
-        <input type="text" class="form-control item" id="openingtime" placeholder="openingtime"
-            formControlName="openingtime">
-        <input type="text" class="form-control item" id="AddressLat" placeholder="Latitude of location"
-            formControlName="AddressLat">
-        <input type="text" class="form-control item" id="AdressLong" placeholder="Longitude of location"
-            formControlName="AdressLong">
-        <button type="submit" class="btn btn-block reg-btn">Register</button>
+        <div class="form">
+            <input type="text" class="form-control item" id="name" placeholder="Name" formControlName="name">
+            <input type="text" class="form-control item" id="place" placeholder="place" formControlName="place">
+            <input type="text" class="form-control item" id="imageUrl" placeholder="Image" formControlName="imageUrl">
+            <input type="text" class="form-control item" id="cuisine" placeholder="cuisine" formControlName="cuisine">
+            <input type="text" class="form-control item" id="openingtime" placeholder="openingtime"
+                formControlName="openingtime">
+            <div class="row gap-4">
+                <input type="text" class="form-control item col" id="AddressLat" placeholder="Latitude of location"
+                    formControlName="AddressLat">
+                <input type="text" class="form-control item  col" id="AdressLong" placeholder="Longitude of location"
+                    formControlName="AdressLong">
+            </div>
+        </div>
+
+        <button type="submit" class="btn my-2 start reg-btn">Register</button>
+
     </form>
 </div>

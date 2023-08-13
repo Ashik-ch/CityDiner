@@ -35,4 +35,13 @@ router.get('/:restaurantid', asyncHandler(
     }
 ))
 
+router.delete('/:id', asyncHandler(
+    async (req, res) => {
+        const { id } = req.params;
+        const restaurnt = await RestaurantModel.findOneAndDelete({ _id: id })
+        if (restaurnt) res.status(200).send({ msg: "Deleted Succesfully" });
+        else res.status(400).send({ msg: "Not Found" })
+    }
+))
+
 export default router;

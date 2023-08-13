@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from 'src/app/service/restaurant.service';
 import { IRestaurant } from 'src/app/shared/models/Interface';
-import { RestaurantAddDialogComponent } from '../../modal/restaurant-add-dialog/restaurant-add-dialog.component';
-
-import { MatDialog, } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-restaurant',
@@ -14,7 +11,7 @@ export class RestaurantComponent implements OnInit {
 
   restaurants: IRestaurant[] = [];
 
-  constructor(private restaurantServ: RestaurantService, public dialog: MatDialog) { }
+  constructor(private restaurantServ: RestaurantService) { }
 
   ngOnInit(): void {
     this.getRestaurantAll()
@@ -29,24 +26,5 @@ export class RestaurantComponent implements OnInit {
   }
 
 
-  openDialog() {
-    const dialogRef = this.dialog.open(RestaurantAddDialogComponent, {
-      height: '600px',
-      width: '750px',
-      disableClose: true, // prevents closing the dialog by clicking outside
-    })
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.restaurantServ.postRestaurant(result).subscribe(
-          () => {
-            this.getRestaurantAll()
-          },
-          (error => {
-            alert(error.error.msg)
-          }))
-      }
-    });
-  }
 }
 
