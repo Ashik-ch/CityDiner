@@ -1,0 +1,5 @@
+/* Style for the placeholder text in input[type="time"] elements */
+input[type="time"]::before {
+  content: attr(placeholder);
+  color: #999; /* Placeholder text color */
+}

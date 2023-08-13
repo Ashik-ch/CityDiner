@@ -3,14 +3,25 @@
         <button type="button" class="btn-close" aria-label="Close" (click)="onCancel()"></button>
     </div>
     <form [formGroup]="RestaurantForm" (ngSubmit)="OnSubmit()">
-        <h3 class="text-dark"> {{buttonLabel}}</h3>
+        <h3 class="text-dark text-center"> {{buttonLabel}}</h3>
         <div class="form">
             <input type="text" class="form-control item" id="name" placeholder="Name" formControlName="name">
             <input type="text" class="form-control item" id="place" placeholder="place" formControlName="place">
             <input type="text" class="form-control item" id="imageUrl" placeholder="Image" formControlName="imageUrl">
-            <input type="text" class="form-control item" id="cuisine" placeholder="cuisine" formControlName="cuisine">
-            <input type="text" class="form-control item" id="openingtime" placeholder="openingtime"
-                formControlName="openingtime">
+            <select name="cuisine" id="" formControlName="cuisine" class="form-control item">
+                <option value="" disabled selected>Select cuisine</option>
+                <option value="Chinese">Chinese cuisine</option>
+                <option value="Indian"> Indian cuisine</option>
+                <option value="Italian"> Italian cuisine</option>
+                <option value="Arabian">Arabian Cusine</option>
+                <option value="Thurkish">Thurkish Cuisine</option>
+            </select>
+            <div class='row gap-4'>
+                <input type="time" class="form-control item col" id="openingtime" placeholder="openingtime"
+                    formControlName="openingtime">
+                <input type="time" class="form-control item col" id="" placeholder="closing Time"
+                    formControlName="closingtime">
+            </div>
             <div class="row gap-4">
                 <input type="text" class="form-control item col" id="AddressLat" placeholder="Latitude of location"
                     formControlName="AddressLat">
@@ -19,7 +30,7 @@
             </div>
         </div>
 
-        <button type="submit" class="btn my-2 start reg-btn">{{buttonLabel}}</button>
+        <button type="submit" class="btn mt-2 mb-4 start reg-btn">{{buttonLabel}}</button>
 
     </form>
 </div>

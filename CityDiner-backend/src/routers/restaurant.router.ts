@@ -11,14 +11,14 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post('/', asyncHandler(
     async (req, res) => {
-        const { name, place, cuisine, imageUrl, openingtime, AddressLat, AdressLong } = req.body;
+        const { name, place, cuisine, imageUrl, openingtime, closingtime, AddressLat, AdressLong } = req.body;
         const item = await RestaurantModel.findOne({ name })
         if (item) {
             res.status(400).send({ msg: 'Already exist' })
         }
         else {
             const newRestaurant: IRestaurant = {
-                name, place, cuisine, imageUrl, openingtime, stars: 4, AddressLat, AdressLong
+                name, place, cuisine, imageUrl, openingtime, closingtime, stars: 4, AddressLat, AdressLong
             }
             const dbRestaurant = await RestaurantModel.create(newRestaurant)
             res.send(newRestaurant)
@@ -35,12 +35,24 @@ router.get('/:restaurantid', asyncHandler(
     }
 ))
 
+//Delete Restaurant
 router.delete('/:id', asyncHandler(
     async (req, res) => {
         const { id } = req.params;
         const restaurnt = await RestaurantModel.findOneAndDelete({ _id: id })
         if (restaurnt) res.status(200).send({ msg: "Deleted Succesfully" });
         else res.status(400).send({ msg: "Not Found" })
+    }
+))
+
+//Update Restaurant
+router.put('/:id', asyncHandler(
+    async (req, res) => {
+        const { name, place, cuisine, imageUrl, openingtime, closingtime, AddressLat, AdressLong } = req.body;
+        const id = req.params.id
+        const updateRest = await RestaurantModel.findOneAndUpdate({ _id: id },
+            { name, place, cuisine, imageUrl, openingtime, closingtime, AddressLat, AdressLong })
+        res.status(200).send(updateRest)
     }
 ))
 

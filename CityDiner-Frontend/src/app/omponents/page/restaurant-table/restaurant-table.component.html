@@ -11,7 +11,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">place</th>
                 <th scope="col">cuisine</th>
-                <th scope="col">openingtime</th>
+                <th scope="col">Opening 🕒</th>
+                <th scope="col">Closing 🕒</th>
                 <th scope="col">stars</th>
                 <th scope="col">Action</th>
             </tr>
@@ -25,6 +26,7 @@
                 <td>{{item.place }}</td>
                 <td>{{item.cuisine}}</td>
                 <td>{{item.openingtime}}</td>
+                <td>{{item.closingtime}}</td>
                 <td>{{item.stars}}</td>
                 <td class=""><i class="fa-solid fa-trash me-2" (click)="onDelete(item)"></i>
                     <i class="fa-regular fa-pen-to-square ms-2" (click)="openRestaurantDialog(item)"></i>

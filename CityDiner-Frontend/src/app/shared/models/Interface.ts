@@ -63,6 +63,7 @@ export interface IRestaurant {
     place: string
     stars?: number
     openingtime: number
+    closingtime: number
     AddressLat: number
     AdressLong: number
 }

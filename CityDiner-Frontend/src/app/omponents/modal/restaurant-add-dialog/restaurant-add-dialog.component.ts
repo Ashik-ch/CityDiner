@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IRestaurant } from 'src/app/shared/models/Interface';
 
 @Component({
   selector: 'app-restaurant-add-dialog',
@@ -12,43 +13,48 @@ export class RestaurantAddDialogComponent {
 
   RestaurantForm: FormGroup;
   buttonLabel: string = 'Add Restaurant'
+  mode: string = '';
 
-  constructor(
-    public dialogRef: MatDialogRef<RestaurantAddDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private fb: FormBuilder) {
+  constructor(public dialogRef: MatDialogRef<RestaurantAddDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IRestaurant,
+    private fb: FormBuilder
+  ) {
     this.RestaurantForm = this.fb.group({
+      id: [''],
       name: ['', [Validators.required,]],
       place: ['', [Validators.required]],
       imageUrl: ['', Validators.required],
       cuisine: ['', Validators.required],
-      openingtime: ['', [Validators.required, Validators.pattern('^[0-9*]+$')]],
-      AdressLong: ['', Validators.required],
-      AddressLat: ['', Validators.required],
+      openingtime: ['', [Validators.required]],
+      closingtime: ['', [Validators.required]],
+      AdressLong: ['', [Validators.required]],
+      AddressLat: ['', [Validators.required]],
     })
 
-    if (data.restaurant) {
-      data = data.restaurant;
+    if (data) {
+
+      this.mode = 'edited'
       this.buttonLabel = 'Update Restaurant';
       this.RestaurantForm.setValue({
+        id: data.id,
         name: data.name,
         place: data.place,
         imageUrl: data.imageUrl,
         cuisine: data.cuisine,
         openingtime: data.openingtime,
-        AdressLong: data.AdressLong ?? "custom",
-        AddressLat: data.AddressLat ?? "custom",
+        closingtime: data.closingtime,
+        AdressLong: data.AdressLong,
+        AddressLat: data.AddressLat,
       })
     }
   }
 
   OnSubmit() {
     const formvalue = this.RestaurantForm.value
-    console.log("formvalue", formvalue);
     if (this.data) {
-      this.dialogRef.close(formvalue);
+      this.dialogRef.close({ formvalue, mode: this.mode });
     }
-    if (this.RestaurantForm.valid) {
+    else if (this.RestaurantForm.valid && !this.data) {
       this.dialogRef.close(formvalue);
     }
     else {

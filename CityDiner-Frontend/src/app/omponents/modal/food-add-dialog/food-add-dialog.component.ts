@@ -14,8 +14,8 @@ export class FoodAddDialogComponent {
   Buttonlabel: string = 'Add Food'
 
   constructor(public dialogRef: MatDialogRef<FoodAddDialogComponent>,
-    private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: IFood,
+    private fb: FormBuilder,
   ) {
     this.FoodForm = this.fb.group({
       id: [''],
@@ -35,7 +35,7 @@ export class FoodAddDialogComponent {
         tags: data.tags,
         imageUrl: data.imageUrl,
         restaurant: data.restaurant,
-        category: data.category ?? 'defaultCategory'
+        category: data.category,
       });
     }
   }

@@ -13,35 +13,42 @@ export class RestaurantTableComponent implements OnInit {
 
   restaurants!: any
 
-  constructor(private restaurantServ: RestaurantService,
-    public dialog: MatDialog) {
-    this.restaurantServ.getRestaurant().subscribe((res: any) => {
-      this.restaurants = res
-    })
-
-
+  constructor(private restaurantServ: RestaurantService, public dialog: MatDialog) {
+    this.getResraurant()
   }
 
   ngOnInit(): void { }
 
+  getResraurant() {
+    this.restaurantServ.getRestaurant().subscribe((res: any) => {
+      this.restaurants = res
+    })
+  }
+
   openRestaurantDialog(restaurant?: IRestaurant) {
     const dialogRef = this.dialog.open(RestaurantAddDialogComponent, {
       width: '750px',
-      disableClose: true, // prevents closing the dialog by clicking outside
-      data: { restaurant }
+      disableClose: true,
+      data: restaurant
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+      if (result && result.mode) {
+        this.restaurantServ.UpdateRestaurant(result.formvalue).subscribe(res => {
+          this.getResraurant()
+        })
+      }
+      if (result && !result.mode) {
         this.restaurantServ.postRestaurant(result).subscribe(
           (res) => {
             console.log(res);
+            this.getResraurant();
           },
           (error => {
             alert(error.error.msg)
           }))
-      }
-    });
+      };
+    })
   }
 
 

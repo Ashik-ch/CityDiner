@@ -59,7 +59,8 @@ export interface IRestaurant {
     cuisine: string[]
     place: string
     stars?: number
-    openingtime: number
+    openingtime: string
+    closingtime: string
     AddressLat: number
     AdressLong: number
 }
@@ -70,7 +71,8 @@ export const restaurantSchema = new Schema<IRestaurant>(     //Schemas
         favourite: { type: Boolean, required: false },
         imageUrl: { type: String, required: true },
         cuisine: { type: [String], required: true },
-        openingtime: { type: Number, required: true },
+        openingtime: { type: String, required: true },
+        closingtime: { type: String, required: true },
         stars: { type: Number, required: true },
         place: { type: String, required: true },
         AddressLat: { type: Number, required: true },

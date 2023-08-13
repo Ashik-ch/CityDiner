@@ -34,11 +34,13 @@ export class RestaurantService {
   }
 
   postRestaurant(restaurants: IRestaurant): Observable<IRestaurant> {
-    console.log("restaurants", restaurants);
     return this.http.post<IRestaurant>(RESTAURANT_URL, restaurants)
   }
 
   DeleteRestaurant(rest: any) {
     return this.http.delete(`${RESTAURANT_URL}/${rest.id}`)
+  }
+  UpdateRestaurant(rest: IRestaurant) {
+    return this.http.put(`${RESTAURANT_URL}/${rest.id}`, rest)
   }
 }
