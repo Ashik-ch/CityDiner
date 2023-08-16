@@ -1,17 +1,18 @@
-<div class="row d-flex">
-    <div class="card mb-3 col" style="max-width: 540px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="{{selectedRestaurant.imageUrl}}" class="img-fluid rounded-start " alt="...">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{{selectedRestaurant.name}}</h5>
-
-                    <p>{{selectedRestaurant.cuisine}}</p>
-                    <p>{{selectedRestaurant.openingtime}}</p>
-                    <p class="card-text"><small class="text-body-secondary">{{selectedRestaurant.place}}</small></p>
-                    <div class="card_price">{{selectedRestaurant.stars}} ⭐</div>
+<div class="container">
+    <div class="row">
+        <div class="card mb-3 col" style='width: auto; height: auto;'>
+            <div class="row g-0">
+                <div class="col my-2">
+                    <img src="{{selectedRestaurant.imageUrl}}" class="img-fluid rounded-start " alt="...">
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <h5 class="card-title">{{selectedRestaurant.name}}</h5>
+                        <p>{{selectedRestaurant.cuisine}}</p>
+                        <p>{{selectedRestaurant.openingtime}}</p>
+                        <p class="card-text"><small>{{selectedRestaurant.place}}</small></p>
+                        <div class="card_price">{{selectedRestaurant.stars}} ⭐</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,4 +22,5 @@
         <div class="adress border p-3"> Address Not found!</div>
     </div>
     <app-map class="col" [lat]="latitude" [long]="longitude"></app-map>
+
 </div>

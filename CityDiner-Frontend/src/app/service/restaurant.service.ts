@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { RESTAURANT_BY_ID_URL, RESTAURANT_URL } from '../constants/urls';
+import { RESTAURANT_BY_CUISINE, RESTAURANT_BY_ID_URL, RESTAURANT_URL } from '../constants/urls';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IRestaurant } from '../shared/models/Interface';
 
@@ -23,6 +23,10 @@ export class RestaurantService {
 
   getRestaurantByID(restaurantId: string): Observable<IRestaurant> {
     return this.http.get<IRestaurant>(`${RESTAURANT_BY_ID_URL}/${restaurantId}`, { responseType: 'json' });
+  }
+
+  getRestaurantByCuisine(cuisine: string) {
+    return this.http.get(`&${RESTAURANT_BY_CUISINE}/${cuisine}`)
   }
 
   updateRestaurantCount(count: number): void {

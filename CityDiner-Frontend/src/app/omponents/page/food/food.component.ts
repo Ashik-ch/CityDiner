@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { FoodService } from 'src/app/service/food.service';
 import { IFood } from 'src/app/shared/models/Interface';
@@ -21,10 +21,9 @@ export class FoodComponent {
 
   showForm = false;
 
-  constructor(private foodServ: FoodService, private activateRoute: ActivatedRoute, private fb: FormBuilder, public dialog: MatDialog) {
-
+  constructor(private foodServ: FoodService, private activateRoute: ActivatedRoute,
+    public dialog: MatDialog, private route: Router) {
   }
-
 
   ngOnInit(): void {
     this.getFoodData()
@@ -49,5 +48,8 @@ export class FoodComponent {
     })
   }
 
+  isFoodPage() {
+    return this.route.url.includes('/food')
+  }
 
 }

@@ -26,14 +26,25 @@ router.post('/', asyncHandler(
     }
 ))
 
+//getting restaurant by id
 router.get('/:restaurantid', asyncHandler(
     async (req, res) => {
         const restaurant = await RestaurantModel.findById(req.params.restaurantid)
-        console.log("ress", restaurant);
         res.send(restaurant)
 
     }
 ))
+
+//for  cuisine filterring
+router.get('/cuisine/:id', asyncHandler(
+    async (req, res) => {
+        const cuisineIds = req.params.id
+        console.log("cuisineIds", cuisineIds);
+
+        const cuisineTypes = await RestaurantModel.find({ cuisine: cuisineIds });
+        res.send(cuisineTypes);
+    }
+));
 
 //Delete Restaurant
 router.delete('/:id', asyncHandler(

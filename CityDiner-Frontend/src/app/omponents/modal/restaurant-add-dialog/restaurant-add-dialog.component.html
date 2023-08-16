@@ -8,21 +8,22 @@
             <input type="text" class="form-control item" id="name" placeholder="Name" formControlName="name">
             <input type="text" class="form-control item" id="place" placeholder="place" formControlName="place">
             <input type="text" class="form-control item" id="imageUrl" placeholder="Image" formControlName="imageUrl">
-            <select name="cuisine" id="" formControlName="cuisine" class="form-control item">
+            <select name="cuisine" id="" formControlName="cuisine" class="form-control item" multiple>
                 <option value="" disabled selected>Select cuisine</option>
                 <option value="Chinese">Chinese cuisine</option>
-                <option value="Indian"> Indian cuisine</option>
+                <option value="South Indian"> South Indian cuisine</option>
+                <option value="North Indian"> North Indian cuisine</option>
                 <option value="Italian"> Italian cuisine</option>
                 <option value="Arabian">Arabian Cusine</option>
                 <option value="Thurkish">Thurkish Cuisine</option>
             </select>
-            <div class='row gap-4'>
+            <div class='row px-5 gap-4'>
                 <input type="time" class="form-control item col" id="openingtime" placeholder="openingtime"
                     formControlName="openingtime">
                 <input type="time" class="form-control item col" id="" placeholder="closing Time"
                     formControlName="closingtime">
             </div>
-            <div class="row gap-4">
+            <div class='row px-5 gap-4'>
                 <input type="text" class="form-control item col" id="AddressLat" placeholder="Latitude of location"
                     formControlName="AddressLat">
                 <input type="text" class="form-control item  col" id="AdressLong" placeholder="Longitude of location"

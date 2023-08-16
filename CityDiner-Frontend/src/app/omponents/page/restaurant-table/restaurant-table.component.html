@@ -1,12 +1,18 @@
 <div class="container">
-    <div class="d-flex">
-        <input type="search" name="" id="" placeholder="Search restaurant" class="form-control w-25 rounded-end-0"
-            #searchterm>
-        <button (click)="onSearch(searchterm.value)" class="btn-lg rounded-start-0 p-1"> <i
-                class="fa-solid fa-magnifying-glass p-1"></i></button>
+    <div class="row">
+        <div class="col d-flex">
+            <input type="search" name="" id="" placeholder="Search restaurant" class="form-control w-50 rounded-end-0"
+                #searchterm>
+            <button (click)="onSearch(searchterm.value)" class="btn-lg rounded-start-0 p-1"> <i
+                    class="fa-solid fa-magnifying-glass p-1"></i></button>
+        </div>
+        <div class="addfoodbtn text-end col">
+            <button class="px-3" type="button" (click)="openRestaurantDialog()">Add Restaurant</button>
+        </div>
     </div>
-    <div class="addfoodbtn text-end mb-4">
-        <button class="px-3" type="button" (click)="openRestaurantDialog()">Add Restaurant</button>
+
+    <div class="d-flex gap-2 mt-4 m-4 justify-content-center">
+        <div class="border px-4 m-2" *ngFor="let item of cuisines" (click)="onFilterCuisine(item)">{{item}}</div>
     </div>
 
     <table class="table table-striped table-dark">
@@ -17,9 +23,8 @@
                 <th scope="col">Name</th>
                 <th scope="col">place</th>
                 <th scope="col">cuisine</th>
-                <th scope="col">Opening 🕒</th>
-                <th scope="col">Closing 🕒</th>
-                <th scope="col">stars</th>
+                <th scope="col">Shop Time🕒</th>
+                <th scope="col">Rating</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -31,8 +36,7 @@
                 <td>{{item.name}}</td>
                 <td>{{item.place }}</td>
                 <td>{{item.cuisine}}</td>
-                <td>{{item.openingtime}}</td>
-                <td>{{item.closingtime}}</td>
+                <td>{{item.openingtime }} - {{item.closingtime}}</td>
                 <td>{{item.stars}}</td>
                 <td class=""><i class="fa-solid fa-trash me-2" (click)="onDelete(item)"></i>
                     <i class="fa-regular fa-pen-to-square ms-2" (click)="openRestaurantDialog(item)"></i>

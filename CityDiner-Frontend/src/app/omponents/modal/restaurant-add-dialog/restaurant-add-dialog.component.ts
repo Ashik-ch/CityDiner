@@ -10,7 +10,6 @@ import { IRestaurant } from 'src/app/shared/models/Interface';
 })
 
 export class RestaurantAddDialogComponent {
-
   RestaurantForm: FormGroup;
   buttonLabel: string = 'Add Restaurant'
   mode: string = '';

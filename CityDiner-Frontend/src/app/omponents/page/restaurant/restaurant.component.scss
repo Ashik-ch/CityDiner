@@ -13,11 +13,12 @@
 }
 
 .card {
-  width: 244px;
+  width: 283px;
   overflow: hidden;
   border-radius: 36px;
   border: 1px solid lavender;
   margin: 10px;
+  grid-row: auto;
 }
 
 .card__image {

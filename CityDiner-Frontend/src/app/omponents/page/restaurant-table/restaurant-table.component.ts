@@ -12,6 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class RestaurantTableComponent implements OnInit {
 
   restaurants!: any
+  cuisines: any[] = []
 
   constructor(private restaurantServ: RestaurantService, public dialog: MatDialog) {
     this.getResraurant()
@@ -20,8 +21,11 @@ export class RestaurantTableComponent implements OnInit {
   ngOnInit(): void { }
 
   getResraurant() {
-    this.restaurantServ.getRestaurant().subscribe((res: any) => {
+    this.restaurantServ.getRestaurant().subscribe((res: IRestaurant) => {
       this.restaurants = res
+      const cuisnersArray = this.restaurants.map((element: IRestaurant) => element.cuisine)
+      const uniqueCuisinesSet = new Set(cuisnersArray.flat());
+      this.cuisines = ['All', ...Array.from(uniqueCuisinesSet)];
     })
   }
 
@@ -66,6 +70,20 @@ export class RestaurantTableComponent implements OnInit {
       });
       this.restaurants = Searchresult
     })
+  }
+
+  onFilterCuisine(Filterterm: any) {
+    if (Filterterm != "All") {
+      this.restaurantServ.getRestaurant().subscribe((res: any) => {
+        const Cuisine = res.filter((item: any) => {
+          return item.cuisine == Filterterm
+        })
+        this.restaurants = Cuisine
+      })
+    }
+    else {
+      this.getResraurant();
+    }
   }
 
 }
